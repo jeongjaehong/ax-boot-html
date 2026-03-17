@@ -3,6 +3,15 @@
     <output-path>$PROJECT_DIR$/WebContent</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="ax-boot-html/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="file-copy" path="$PROJECT_DIR$/src/action.properties" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/commons-logging.properties" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/config.properties" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/log4j.properties" />
+          <element id="module-output" name="ax-boot-html" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>
