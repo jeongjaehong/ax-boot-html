@@ -1,3 +1,4 @@
 node_modules/
 rebel.xml
 .rebel.*
+/WebContent/WEB-INF/classes
