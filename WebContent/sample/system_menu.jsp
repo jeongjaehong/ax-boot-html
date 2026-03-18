@@ -1,0 +1,507 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-select/dist/luplino-select.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.css"/>
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/ztree/css/entypoplus/entypoplus.css" />
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/jszip.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/domutils.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-lic.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid2.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-utils.js"></script>
+    <link id="theme" href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/realgrid-style.css" rel="stylesheet">
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-core/dist/luplino-core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-select/dist/luplino-select.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/ztree/js/jquery.ztree.core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/ztree/js/jquery.ztree.excheck.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/ztree/js/jquery.ztree.exedit.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+
+
+    <script type="text/javascript">
+    //realgrid...
+    window.addEventListener('DOMContentLoaded', function () {
+        var gridList = [
+            {"권한그룹 코드": "S0001", "권한그룹명": "시스템관리자 그룹", "권한적용": "True", "조회": "True", "저장": "True", "엑셀": "True", "삭제": "N", "FN1": "N", "FN2": "N", "FN3": "N", "FN4": "N"},
+            {"권한그룹 코드": "S0002", "권한그룹명": "사용자 권한그룹", "권한적용": "N", "조회": "N", "저장": "N", "엑셀": "True", "삭제": "N", "FN1": "N", "FN2": "N", "FN3": "N", "FN4": "N"}
+        ];
+        var fields = [
+                { fieldName: "권한그룹 코드", dataType: "text"},
+                { fieldName: "권한그룹명",    dataType: "text"},
+                { fieldName: "권한적용",      dataType: "boolean"},
+                { fieldName: "조회",          dataType: "boolean"},
+                { fieldName: "저장",          dataType: "boolean"},
+                { fieldName: "삭제",          dataType: "boolean"},
+                { fieldName: "엑셀",          dataType: "boolean"},
+                { fieldName: "FN1",           dataType: "boolean"},
+                { fieldName: "FN2",           dataType: "boolean"},
+                { fieldName: "FN3",           dataType: "boolean"},
+                { fieldName: "FN4",           dataType: "boolean"}
+            ];
+
+            var columns = [
+                {
+                    name: "권한그룹 코드",
+                    fieldName: "권한그룹 코드",
+                    type: "data",
+                    width: "150",
+                    header: {
+                        text: "권한그룹 코드"
+                    }
+                },
+                {
+                    name: "권한그룹명",
+                    fieldName: "권한그룹명",
+                    type: "data",
+                    width: "260",
+                    header: {
+                        text: "권한그룹명"
+                    }
+                },
+                {
+                    name: "권한적용",
+                    fieldName: "권한적용",
+                    type: "data",
+                    width: "80",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "권한적용"
+                    }
+                },
+                {
+                    name: "조회",
+                    fieldName: "조회",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "조회"
+                    }
+                },
+                {
+                    name: "저장",
+                    fieldName: "저장",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "저장"
+                    }
+                },
+                {
+                    name: "삭제",
+                    fieldName: "삭제",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "삭제"
+                    }
+                },
+                {
+                    name: "엑셀",
+                    fieldName: "엑셀",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "엑셀"
+                    }
+                },
+                {
+                    name: "FN1",
+                    fieldName: "FN1",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "FN1"
+                    }
+                },
+                {
+                    name: "FN2",
+                    fieldName: "FN2",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "FN2"
+                    }
+                },
+                {
+                    name: "FN3",
+                    fieldName: "FN3",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "FN3"
+                    }
+                },
+                {
+                    name: "FN4",
+                    fieldName: "FN4",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "FN4"
+                    }
+                }
+            ];
+            var ds = new RealGrid.LocalDataProvider();
+            var grid = new RealGrid.GridView("realgrid");
+            grid.setDataSource(ds);
+            ds.setFields(fields);
+            grid.setColumns(columns);
+            ds.setRows(gridList);            
+            
+            grid.filteringOptions.selector.showButtons = true;
+            grid.displayOptions.refreshMode = "visibleOnly";
+            grid.displayOptions.emptyMessage = "표시할 데이타가 없습니다.";
+            grid.sortingOptions.showSortOrder = true;
+            grid.sortingOptions.style = "reverse";
+            grid.displayOptions.rowHoverType = "row";    
+            grid.displayOptions.rowResizable = true;
+
+            grid.setEditOptions({
+                insertable: true,
+                appendable : true
+            });
+
+            grid.setEditorOptions({
+                viewGridInside: true
+            })
+
+            grid.onContextMenuPopup = function (grid, x, y, elementName) {
+                console.log(arguments);
+                // realgrid-utils.js 기본 팝업 메뉴 생성
+                setContextMenu(grid);
+                
+            };
+            // realgrid-utils.js 기본 팝업 메뉴 실행
+            grid.onContextMenuItemClicked = onContextMenuClick;          
+
+    });
+        var ztreeObj;
+        var ztree = {
+            initView:function(){
+                $.fn.zTree.init($("#ztree"), zsetting, znodes);
+                ztreeObj = $.fn.zTree.getZTreeObj("ztree");
+                ztreeObj.setting.edit.drag.isCopy = true;
+                ztreeObj.setting.edit.drag.isMove = true;
+                ztreeObj.setting.edit.drag.prev = true;
+                ztreeObj.setting.edit.drag.next = true;
+                ztreeObj.setting.edit.drag.inner = true;
+
+                $('[data-ztree-view-btn="add"]').click(function () {
+                    var _act = this.getAttribute("data-ztree-view-btn");
+                    switch (_act) {
+                        case "add":
+                            //ACTIONS.dispatch(ACTIONS.TREE_ROOTNODE_ADD);
+                            break;
+                        case "delete":
+                            //ACTIONS.dispatch(ACTIONS.ITEM_DEL);
+                            break;
+                    }
+                });
+            },
+            beforeDrag:function(treeId, treeNodes) {
+                for (var i=0,l=treeNodes.length; i<l; i++) {
+                    if (treeNodes[i].drag === false) {
+                        return false;
+                    }
+                }
+                return true;
+            },
+            beforeDrop:function(treeId, treeNodes, targetNode, moveType) {
+                return targetNode ? targetNode.drop !== false : true;
+            },
+            addHoverDom: function (treeId, treeNode) {
+
+                var sObj = $("#" + treeNode.tId + "_span");
+                if (treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0) return;
+                var addStr = "<span class='button ico_add' id='addBtn_" + treeNode.tId
+                    + "' title='add node' onfocus='this.blur();'></span>";
+                var editStr = "<span class='button ico_edit' id='editBtn_" + treeNode.tId
+                    + "' title='add node' onfocus='this.blur();'></span>";
+                var delStr = "<span class='button ico_del' id='delBtn_" + treeNode.tId
+                    + "' title='add node' onfocus='this.blur();'></span>";
+
+                sObj.after(delStr);
+                sObj.after(editStr);
+                sObj.after(addStr);
+
+                var btn = $("#addBtn_" + treeNode.tId);
+                // if (btn) {
+                //     btn.bind("click", function () {
+                //         _this.target.zTree.addNodes(
+                //             treeNode,
+                //             {
+                //                 id: "_isnew_" + (++_this.newCount),
+                //                 pId: treeNode.id,
+                //                 name: "New Item",
+                //                 __created__: true,
+                //                 menuGrpCd: _this.param.menuGrpCd
+                //             }
+                //         );
+                //         _this.target.zTree.selectNode(treeNode.children[treeNode.children.length - 1]);
+                //         _this.target.editName();
+                //         //fnObj.treeView01.deselectNode();
+                //         return false;
+                //     });
+                // }
+            },
+            removeHoverDom: function (treeId, treeNode) {
+                $("#addBtn_" + treeNode.tId).unbind().remove();
+                $("#editBtn_" + treeNode.tId).unbind().remove();
+                $("#delBtn_" + treeNode.tId).unbind().remove();
+            }
+        };
+
+        var zsetting = {
+            view:{
+                dblClickExpand: false,
+                addHoverDom:ztree.addHoverDom,
+                removeHoverDom:ztree.removeHoverDom,
+                addDiyDom: ztree.addDiyDom
+            },
+            edit:{
+                enable: true,
+                editNameSelectAll: true,
+                showRemoveBtn: false,
+                showRenameBtn: false
+            },
+            data: {
+                simpleData: {
+                    enable: true
+                }
+            },
+            callback: {
+                beforeDrag: ztree.beforeDrag,
+                beforeDrop: ztree.beforeDrop,
+                onClick: function (e, treeId, treeNode, isCancel) {
+                    //ACTIONS.dispatch(ACTIONS.TREEITEM_CLICK, treeNode);
+                },
+                onRename: function (e, treeId, treeNode, isCancel) {
+                    treeNode.__modified__ = true;
+                },
+                onRemove: function (e, treeId, treeNode, isCancel) {
+                    if (!treeNode.__created__) {
+                        treeNode.__deleted__ = true;
+                        _this.deletedList.push(treeNode);
+                    }
+                    fnObj.treeView01.deselectNode();
+                }
+            }
+        };
+        var znodes =[
+            { id:1, pId:0, name:"시스템 관리", open:true, drag:false},
+            { id:11, pId:1, name:"공통코드 관리"},
+
+            { id:12, pId:1, name:"프로그램 관리", open:true},
+            { id:121, pId:12, name:"메뉴 관리"},
+            { id:122, pId:12, name:"사용자 관리"},
+            { id:123, pId:12, name:"에러로그 관리"},
+
+            { id:2, pId:0, name:"샘플", open:true, drag:false},
+            { id:21, pId:2, name:"기본 레이아웃"},
+
+            { id:22, pId:2, name:"레이아웃 예시", open:true, drop:false},
+            { id:221, pId:22, name:"좌우 레이아웃"},
+            { id:222, pId:22, name:"상하 레이아웃"},
+            { id:223, pId:22, name:"UI 템플릿"},
+
+            { id:23, pId:2, name:"레이아웃 사용자화"}
+        ];
+
+        $(document.body).ready(function() {
+            $('[data-lolayout]').lolayout({
+                onResize:function(){
+                    //this.splitPanel의 배열값으로 저장됩니다. splitter값을 포함하여
+                    //3개의 패널이 있다면 splitter는 2개이기 때문에 배열값은 5개를 가집니다.
+                    //그리드가 위치한 패널이 만약 0번째의 사이즈를 알고 싶다면 아래와 같이 변경된 값을 반환합니다.
+                    //console.log(this.splitPanel[4].__width);
+                    // grid.refresh();
+                }
+            });
+
+            $('[data-lo-select]').loselect();
+
+            ztree.initView();
+        });
+
+    </script>
+</head>
+<body>
+
+<div class="page-root">
+    <div class="page-title">
+        <div class="left"><i class="icon icon-list"></i>&nbsp;<h1>메뉴 관리</h1></div>
+        <div class="right">
+            <div class="la-button-group">
+                <a href="#" class="la-button large" data-ztree-view-btn="add"><i class="icon icon-install"></i>&nbsp;<span class="text">저장</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="page-fixed with-title">
+
+        <div data-lolayout="col-1" data-config="{layout:'split-panel', orientation: 'vertical'}">
+            <div data-split-panel="{width: '300', minWidth:50}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">메뉴 목록</span></div>
+                            <div class="right">
+                                <a href="#" class="la-button primary"><i class="icon icon-plus"></i>&nbsp;<span class="text">추가</span></a>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <div class="pad-row">
+                                <div class="la-input-group">
+                                    <label>메뉴 그룹</label>
+                                    <div data-lo-select="select1" data-lo-select-config="{
+                                                name: 'select1',
+                                                minWidth: 150,
+                                                options:[
+                                                    {value:'0', text:'시스템관리자 그룹'},
+                                                    {value:'1', text:'사용자 그룹'}
+                                                    ]
+                                                }"></div>
+                                </div>
+                            </div>
+                            <div id="ztree" class="ztree"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-splitter="{}"></div>
+            <div data-split-panel="{width: '*'}">
+
+                <div data-lolayout="row-1" data-config="{layout:'split-panel', orientation: 'horizontal'}">
+                    <div data-split-panel="{height: '150', minHeight:100}">
+
+                        <div class="pad-cont full-height">
+                            <div class="pad">
+                                <div class="pad-head">
+                                    <div class="left"><span class="title">프로그램 설정</span></div>
+                                    <div class="right">&nbsp;</div>
+                                </div>
+                                <div class="pad-body">
+                                    <table class="pad-table">
+                                        <colgroup>
+                                            <col width="140" />
+                                            <col />
+                                        </colgroup>
+                                        <tr>
+                                            <td class="label">프로그램 코드</td>
+                                            <td>
+                                                <input type="text" class="la-input disabled" disabled="disabled" style="width:100%;" />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label">다국어 설정</td>
+                                            <td style="padding:0">
+                                                <div class="la-input-group">
+                                                    <label for="la-lang-1">한국어</label>
+                                                    <input type="text" id="la-lang-1" class="la-input" style="width:100px;" />
+                                                </div>
+                                                <div class="la-input-group">
+                                                    <label for="la-lang-2">English</label>
+                                                    <input type="text" id="la-lang-2" class="la-input" style="width:100px;" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="label">프로그램 명</td>
+                                            <td>
+                                                <div data-lo-select="select2" data-lo-select-config="{
+                                                name: 'select2',
+                                                width: '100%',
+                                                minWidth: '300',
+                                                options:[
+                                                    {value:'0', text:'API(api)'},
+                                                    {value:'1', text:'프로그램 관리(system-config-program)'},
+                                                    {value:'2', text:'기본 템플릿(basic-template)'},
+                                                    {value:'3', text:'로그인(login)'}
+                                                    ]
+                                                }"></div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div data-splitter="{}"></div>
+                    <div data-split-panel="{height: '*'}">
+
+                        <div class="pad-cont full-height">
+                            <div class="pad">
+                                <div class="pad-head">
+                                    <div class="left"><span class="title">권한그룹 설정</span></div>
+                                    <div class="right">&nbsp;</div>
+                                </div>
+                                <div class="pad-body with-head">
+                                    <style>
+                                        .rg-root.rg-grid {border:none !important;}
+                                    </style>
+                                    <div id="realgrid" style="width:100%; height:100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

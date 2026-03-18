@@ -1,0 +1,290 @@
+.btn {
+  border: 1px solid #f00; }
+
+/*!
+ * Copyright (c) 2020. jowrney@jowrney.com
+ * - www.luplin.com
+ */
+@-webkit-keyframes lo-toast-bottom {
+  from {
+    -webkit-transform: translateY(-100px) scale(0.7); }
+  to {
+    -webkit-transform: translateY(0px) scale(1); } }
+@-moz-keyframes lo-toast-bottom {
+  from {
+    -moz-transform: translateY(-100px) scale(0.7); }
+  to {
+    -moz-transform: translateY(0px) scale(1); } }
+@keyframes lo-toast-bottom {
+  from {
+    -webkit-transform: translateY(-100px) scale(0.7);
+    -moz-transform: translateY(-100px) scale(0.7);
+    -ms-transform: translateY(-100px) scale(0.7);
+    -o-transform: translateY(-100px) scale(0.7);
+    transform: translateY(-100px) scale(0.7); }
+  to {
+    -webkit-transform: translateY(0px) scale(1);
+    -moz-transform: translateY(0px) scale(1);
+    -ms-transform: translateY(0px) scale(1);
+    -o-transform: translateY(0px) scale(1);
+    transform: translateY(0px) scale(1); } }
+@-webkit-keyframes lo-toast-top {
+  from {
+    -webkit-transform: translateY(100px) scale(0.7); }
+  to {
+    -webkit-transform: translateY(0px) scale(1); } }
+@-moz-keyframes lo-toast-top {
+  from {
+    -moz-transform: translateY(100px) scale(0.7); }
+  to {
+    -moz-transform: translateY(0px) scale(1); } }
+@keyframes lo-toast-top {
+  from {
+    -webkit-transform: translateY(100px) scale(0.7);
+    -moz-transform: translateY(100px) scale(0.7);
+    -ms-transform: translateY(100px) scale(0.7);
+    -o-transform: translateY(100px) scale(0.7);
+    transform: translateY(100px) scale(0.7); }
+  to {
+    -webkit-transform: translateY(0px) scale(1);
+    -moz-transform: translateY(0px) scale(1);
+    -ms-transform: translateY(0px) scale(1);
+    -o-transform: translateY(0px) scale(1);
+    transform: translateY(0px) scale(1); } }
+@-webkit-keyframes lo-toast-removed-bottom {
+  from {
+    -webkit-transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: translateY(10px) scale(0.7);
+    opacity: 0.0; } }
+@-moz-keyframes lo-toast-removed-bottom {
+  from {
+    -moz-transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -moz-transform: translateY(10px) scale(0.7);
+    opacity: 0.0; } }
+@keyframes lo-toast-removed-bottom {
+  from {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: translateY(10px) scale(0.7);
+    -moz-transform: translateY(10px) scale(0.7);
+    -ms-transform: translateY(10px) scale(0.7);
+    -o-transform: translateY(10px) scale(0.7);
+    transform: translateY(10px) scale(0.7);
+    opacity: 0.0; } }
+@-webkit-keyframes lo-toast-removed-top {
+  from {
+    -webkit-transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: translateY(-10px) scale(0.7);
+    opacity: 0.0; } }
+@-moz-keyframes lo-toast-removed-top {
+  from {
+    -moz-transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -moz-transform: translateY(-10px) scale(0.7);
+    opacity: 0.0; } }
+@keyframes lo-toast-removed-top {
+  from {
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: translateY(-10px) scale(0.7);
+    -moz-transform: translateY(-10px) scale(0.7);
+    -ms-transform: translateY(-10px) scale(0.7);
+    -o-transform: translateY(-10px) scale(0.7);
+    transform: translateY(-10px) scale(0.7);
+    opacity: 0.0; } }
+@-webkit-keyframes lo-toast-destroy {
+  from {
+    -webkit-transform: scale(1);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: scale(1.5);
+    opacity: 0.0; } }
+@-moz-keyframes lo-toast-destroy {
+  from {
+    -moz-transform: scale(1);
+    opacity: 1.0; }
+  to {
+    -moz-transform: scale(1.5);
+    opacity: 0.0; } }
+@keyframes lo-toast-destroy {
+  from {
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    opacity: 1.0; }
+  to {
+    -webkit-transform: scale(1.5);
+    -moz-transform: scale(1.5);
+    -ms-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+    opacity: 0.0; } }
+.lo-ui-toast-container {
+  z-index: 2000;
+  position: fixed;
+  width: auto;
+  padding: 10px;
+  box-sizing: border-box; }
+  .lo-ui-toast-container *,
+  .lo-ui-toast-container *:before,
+  .lo-ui-toast-container *:after {
+    box-sizing: border-box; }
+  .lo-ui-toast-container .lo-ui-toast {
+    box-sizing: border-box;
+    border: 1px solid gray;
+    opacity: 0.9;
+    border-radius: 8px;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.175);
+    position: relative;
+    margin: 5px 0px 5px 0px;
+    display: table;
+    padding: 6px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: #fff;
+    color: #333333; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-icon {
+      display: table-cell;
+      padding: 6px;
+      text-align: left;
+      font-size: 24px;
+      width: 24px;
+      vertical-align: middle; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-body {
+      display: table-cell;
+      padding: 6px;
+      text-align: left;
+      vertical-align: middle; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-buttons {
+      display: table-cell;
+      padding: 6px;
+      text-align: right;
+      vertical-align: middle; }
+      .lo-ui-toast-container .lo-ui-toast .lo-toast-buttons button:not(:last-child) {
+        margin-right: 3px; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-close {
+      display: table-cell;
+      padding: 6px;
+      text-align: right;
+      vertical-align: top;
+      text-decoration: none;
+      cursor: pointer; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-icon {
+      color: #333333; }
+    .lo-ui-toast-container .lo-ui-toast .lo-toast-close {
+      color: #333333; }
+    .lo-ui-toast-container .lo-ui-toast.primary {
+      background: #fff;
+      color: #337ab7; }
+      .lo-ui-toast-container .lo-ui-toast.primary .lo-toast-icon {
+        color: #337ab7; }
+      .lo-ui-toast-container .lo-ui-toast.primary .lo-toast-close {
+        color: #337ab7; }
+    .lo-ui-toast-container .lo-ui-toast.success {
+      background: #fff;
+      color: #5cb85c; }
+      .lo-ui-toast-container .lo-ui-toast.success .lo-toast-icon {
+        color: #5cb85c; }
+      .lo-ui-toast-container .lo-ui-toast.success .lo-toast-close {
+        color: #5cb85c; }
+    .lo-ui-toast-container .lo-ui-toast.info {
+      background: #fff;
+      color: #5bc0de; }
+      .lo-ui-toast-container .lo-ui-toast.info .lo-toast-icon {
+        color: #5bc0de; }
+      .lo-ui-toast-container .lo-ui-toast.info .lo-toast-close {
+        color: #5bc0de; }
+    .lo-ui-toast-container .lo-ui-toast.warning {
+      background: #fff;
+      color: #f0ad4e; }
+      .lo-ui-toast-container .lo-ui-toast.warning .lo-toast-icon {
+        color: #f0ad4e; }
+      .lo-ui-toast-container .lo-ui-toast.warning .lo-toast-close {
+        color: #f0ad4e; }
+    .lo-ui-toast-container .lo-ui-toast.danger {
+      background: #fff;
+      color: #d9534f; }
+      .lo-ui-toast-container .lo-ui-toast.danger .lo-toast-icon {
+        color: #d9534f; }
+      .lo-ui-toast-container .lo-ui-toast.danger .lo-toast-close {
+        color: #d9534f; }
+  .lo-ui-toast-container.bottom-left {
+    left: 0;
+    bottom: 0; }
+    .lo-ui-toast-container.bottom-left .lo-ui-toast {
+      -webkit-animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      -moz-animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1); }
+      .lo-ui-toast-container.bottom-left .lo-ui-toast.removed {
+        -webkit-animation: lo-toast-removed-bottom 0.3s ease forwards;
+        -moz-animation: lo-toast-removed-bottom 0.3s ease forwards;
+        animation: lo-toast-removed-bottom 0.3s ease forwards; }
+      .lo-ui-toast-container.bottom-left .lo-ui-toast.destroy {
+        -webkit-animation: lo-toast-destroy 0.3s ease forwards;
+        -moz-animation: lo-toast-destroy 0.3s ease forwards;
+        animation: lo-toast-destroy 0.3s ease forwards; }
+  .lo-ui-toast-container.bottom-right {
+    right: 0;
+    bottom: 0; }
+    .lo-ui-toast-container.bottom-right .lo-ui-toast {
+      -webkit-animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      -moz-animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      animation: lo-toast-top 0.3s cubic-bezier(0.86, 0, 0.07, 1); }
+      .lo-ui-toast-container.bottom-right .lo-ui-toast.removed {
+        -webkit-animation: lo-toast-removed-bottom 0.3s ease forwards;
+        -moz-animation: lo-toast-removed-bottom 0.3s ease forwards;
+        animation: lo-toast-removed-bottom 0.3s ease forwards; }
+      .lo-ui-toast-container.bottom-right .lo-ui-toast.destroy {
+        -webkit-animation: lo-toast-destroy 0.3s ease forwards;
+        -moz-animation: lo-toast-destroy 0.3s ease forwards;
+        animation: lo-toast-destroy 0.3s ease forwards; }
+  .lo-ui-toast-container.top-left {
+    left: 0;
+    top: 0; }
+    .lo-ui-toast-container.top-left .lo-ui-toast {
+      -webkit-animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      -moz-animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1); }
+      .lo-ui-toast-container.top-left .lo-ui-toast.removed {
+        -webkit-animation: lo-toast-removed-top 0.3s ease forwards;
+        -moz-animation: lo-toast-removed-top 0.3s ease forwards;
+        animation: lo-toast-removed-top 0.3s ease forwards; }
+      .lo-ui-toast-container.top-left .lo-ui-toast.destroy {
+        -webkit-animation: lo-toast-destroy 0.3s ease forwards;
+        -moz-animation: lo-toast-destroy 0.3s ease forwards;
+        animation: lo-toast-destroy 0.3s ease forwards; }
+  .lo-ui-toast-container.top-right {
+    right: 0;
+    top: 0; }
+    .lo-ui-toast-container.top-right .lo-ui-toast {
+      -webkit-animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      -moz-animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1);
+      animation: lo-toast-bottom 0.3s cubic-bezier(0.86, 0, 0.07, 1); }
+      .lo-ui-toast-container.top-right .lo-ui-toast.removed {
+        -webkit-animation: lo-toast-removed-top 0.3s ease forwards;
+        -moz-animation: lo-toast-removed-top 0.3s ease forwards;
+        animation: lo-toast-removed-top 0.3s ease forwards; }
+      .lo-ui-toast-container.top-right .lo-ui-toast.destroy {
+        -webkit-animation: lo-toast-destroy 0.3s ease forwards;
+        -moz-animation: lo-toast-destroy 0.3s ease forwards;
+        animation: lo-toast-destroy 0.3s ease forwards; }

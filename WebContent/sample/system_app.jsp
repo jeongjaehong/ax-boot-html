@@ -1,0 +1,300 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.css"/>
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/jszip.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/domutils.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-lic.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid2.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-utils.js"></script>
+    <link id="theme" href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/realgrid-style.css" rel="stylesheet">
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-core/dist/luplino-core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.js"></script>
+    
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+    <script type="text/javascript">
+        //realgrid...
+        window.addEventListener('DOMContentLoaded', function () {
+
+            var fields = [
+                { fieldName: "프로그램명",      dataType: "text"},
+                { fieldName: "경로",            dataType: "text"},
+                { fieldName: "권한체크여부",    dataType: "boolean"},
+                { fieldName: "조회",            dataType: "boolean"},
+                { fieldName: "저장",            dataType: "boolean"},
+                { fieldName: "엑셀",            dataType: "boolean"},
+                { fieldName: "삭제",            dataType: "boolean"},
+                { fieldName: "FN1",             dataType: "boolean"},
+                { fieldName: "FN2",             dataType: "boolean"},
+                { fieldName: "FN3",             dataType: "boolean"},
+                { fieldName: "FN4",             dataType: "boolean"},
+                { fieldName: "비고",            dataType: "text"}
+            ];
+
+            var columns = [
+                {
+                    name: "프로그램명",
+                    fieldName: "프로그램명",
+                    type: "data",
+                    width: "150",
+                    header: {
+                        text: "프로그램명"
+                    }
+                },
+                {
+                    name: "경로",
+                    fieldName: "경로",
+                    type: "data",
+                    width: "360",
+                    header: {
+                        text: "경로"
+                    }
+                },
+                {
+                    name: "권한체크여부",
+                    fieldName: "권한체크여부",
+                    type: "data",
+                    width: "100",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "권한제크여부"
+                    }
+                },
+                {
+                    name: "조회",
+                    fieldName: "조회",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "조회"
+                    }
+                },
+                {
+                    name: "엑셀",
+                    fieldName: "엑셀",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "엑셀"
+                    }
+                },
+                {
+                    name: "삭제",
+                    fieldName: "삭제",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "삭제"
+                    }
+                },
+                {
+                    name: "FN1",
+                    fieldName: "FN1",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "FN1"
+                    }
+                },
+                {
+                    name: "FN2",
+                    fieldName: "FN2",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "FN2"
+                    }
+                },
+                {
+                    name: "FN3",
+                    fieldName: "FN3",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "FN3"
+                    }
+                },
+                {
+                    name: "FN4",
+                    fieldName: "FN4",
+                    type: "data",
+                    width: "60",
+                    editable: false,
+                    renderer: {
+                        type: "check"
+                    },
+                    header: {
+                        text: "FN4"
+                    }
+                },
+                {
+                    name: "비고",
+                    fieldName: "비고",
+                    type: "data",
+                    width: "300",
+                    header: {
+                        text: "비고"
+                    }
+                }               
+            ];
+            
+            var gridList = [
+                {"프로그램명": "API", "경로": "/api/", "권한체크여부":"N", "조회":"True", "저장":"True", "엑셀":"True", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "공통코드 관리", "경로": "/jsp/system/system-config-common-code.jsp", "권한체크여부":"True", "조회":"True", "저장":"True", "엑셀":"True", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "기본 템플릿", "경로": "/jsp/sample/basic.jsp", "권한체크여부":"True", "조회":"True", "저장":"True", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "에러로그 관리", "경로": "/jsp/system/system-log.jsp", "권한체크여부":"True", "조회":"True", "저장":"N", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "프로그램 관리", "경로": "/jsp/system/system-config-app.jsp", "권한체크여부":"True", "조회":"True", "저장":"N", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "메뉴 관리", "경로": "/jsp/system/system-config-menu.jsp", "권한체크여부":"True", "조회":"True", "저장":"True", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "메인", "경로": "/jsp/main.jsp", "권한체크여부":"True", "조회":"N", "저장":"N", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "사용자 관리", "경로": "/jsp/system-auth-user.jsp", "권한체크여부":"True", "조회":"True", "저장":"True", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "루플리노 샘플", "경로": "/jsp/sample/luplino.jsp", "권한체크여부":"N", "조회":"N", "저장":"N", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""},
+                {"프로그램명": "루플리나 샘플", "경로": "/jsp/sample/luplina.jsp", "권한체크여부":"N", "조회":"N", "저장":"N", "엑셀":"N", "삭제":"N", "FN1":"N", "FN2":"N", "FN3":"N", "FN4":"N", "비고":""}
+            ];
+
+            var ds = new RealGrid.LocalDataProvider();
+            var grid = new RealGrid.GridView("realgrid");
+            grid.setDataSource(ds);
+            ds.setFields(fields);
+            grid.setColumns(columns);
+            ds.setRows(gridList);            
+            
+            grid.filteringOptions.selector.showButtons = true;
+            grid.displayOptions.refreshMode = "visibleOnly";
+            grid.displayOptions.emptyMessage = "표시할 데이타가 없습니다.";
+            grid.sortingOptions.showSortOrder = true;
+            grid.sortingOptions.style = "reverse";
+            grid.displayOptions.rowHoverType = "row";    
+            grid.displayOptions.rowResizable = true;
+
+            grid.setEditOptions({
+                insertable: true,
+                appendable : true
+            });
+
+            grid.setEditorOptions({
+                viewGridInside: true
+            })
+
+            grid.onContextMenuPopup = function (grid, x, y, elementName) {
+                console.log(arguments);
+                // realgrid-utils.js 기본 팝업 메뉴 생성
+                setContextMenu(grid);
+                
+            };
+            // realgrid-utils.js 기본 팝업 메뉴 실행
+            grid.onContextMenuItemClicked = onContextMenuClick; 
+        });
+
+        $(document.body).ready(function() {
+            $('[data-lolayout]').lolayout();
+        });
+    </script>
+</head>
+<body>
+
+<div class="page-root">
+    <div class="page-title">
+        <div class="left"><i class="icon icon-browser"></i>&nbsp;<h1>프로그램 관리</h1></div>
+        <div class="right">
+            <div class="la-button-group">
+                <a href="#" class="la-button large disabled"><i class="icon icon-install"></i>&nbsp;<span class="text">저장</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="page-fixed with-title">
+
+        <div data-lolayout="row-1" data-config="{layout:'split-panel', orientation: 'horizontal'}">
+            <div data-split-panel="{height: '85', minHeight:50}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">조회</span></div>
+                            <div class="right">
+                                <div class="la-button-group">
+                                    <a href="#" class="la-button primary"><i class="icon icon-magnifying-glass"></i>&nbsp;<span class="text">조회</span></a>
+                                    <a href="#" class="la-button"><i class="icon icon-cross"></i>&nbsp;<span class="text">취소</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <div class="pad-row">
+                                <div class="la-input-group">
+                                    <label for="input-1-1">검색어</label>
+                                    <input type="text" id="input-1-1" class="la-input" style="width:130px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-splitter="{}"></div>
+            <div data-split-panel="{height: '*'}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad" style="overflow: hidden;">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">프로그램 목록</span></div>
+                            <div class="right">
+                                <a href="#"><i class="icon icon-circle-with-plus"></i>&nbsp;<span class="text">추가</span></a>&nbsp;&nbsp;
+                                <a href="#"><i class="icon icon-circle-with-minus"></i>&nbsp;<span class="text">삭제</span></a>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <style>
+                                .rg-root.rg-grid {border:none !important;}
+                            </style>
+                            <div id="realgrid" style="width:100%; height:100%;"></div> 
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/ztree/css/entypoplus/entypoplus.css" />
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/ztree/js/jquery.ztree.core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/js/luplina.js"></script>
+</head>
+
+<body>
+<div class="la-panel">
+    <div class="la-panel-box">
+        <div class="la-panel-head"><i class="icon icon-list"></i> <span>퀵메뉴</span></div>
+        <div class="la-panel-body">
+            <div id="ztree" class="ztree"></div>
+            <!--            <div data-logrid="first-grid" data-logrid-config="{}" class="la-panel-grid onlytree"></div>-->
+        </div>
+    </div>
+</div>
+
+<script>
+    // var firstGrid = new luplino.ui.grid();
+
+    var setting = {};
+
+    var znodes =[
+        { name:"즐겨찾기", open:true,
+            children: [
+                { name:"메모"},
+                { name:"일정"},
+                { name:"시스템"},
+                { name:"세금계산서"}
+            ]}
+    ];
+
+    var ztree = {
+        initView:function(){
+            $.fn.zTree.init($("#ztree"), setting, znodes);
+        }
+    };
+
+    $(document.body).ready(function () {
+        ztree.initView();
+        // gridView.setData();
+    });
+</script>
+
+</body>
+</html>

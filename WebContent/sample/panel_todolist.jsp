@@ -1,0 +1,46 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/js/luplina.js"></script>
+</head>
+
+<body>
+<div class="la-panel">
+    <div class="la-panel-box">
+        <div class="la-panel-head"><i class="icon icon-check"></i> <span>TO DO LIST</span></div>
+        <div class="la-panel-body">
+            <div class="la-panel-list-group">
+                <ul class="la-panel-list">
+                    <li>
+                        <input type="checkbox" class="lo-checkbox primary" id="lcb1" checked="checked">
+                        <label for="lcb1">한일 계약서 작성</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="lo-checkbox primary" id="lcb2">
+                        <label for="lcb2">문서파일정리</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="lo-checkbox primary" id="lcb3">
+                        <label for="lcb3">지출결의안 제출 금일까지</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" class="lo-checkbox primary" id="lcb4">
+                        <label for="lcb4">회의안 준비</label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

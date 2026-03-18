@@ -1,0 +1,296 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.css"/>
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/jszip.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/domutils.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-lic.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid2.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-utils.js"></script>
+    <link id="theme" href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/realgrid-style.css" rel="stylesheet">
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-core/dist/luplino-core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+
+    <script type="text/javascript">
+        //realgrid...
+        window.addEventListener('DOMContentLoaded', function () {
+            var fields = [
+                { fieldName: "분류코드", dataType: "text"},
+                { fieldName: "분류명",   dataType: "text"},
+                { fieldName: "코드",     dataType: "text"},
+                { fieldName: "코드값",   dataType: "text"},
+                { fieldName: "정렬",     dataType: "text"},
+                { fieldName: "사용여부", dataType: "boolean"},
+                { fieldName: "비고",     dataType: "text"},
+                { fieldName: "데이터1",  dataType: "text"},
+                { fieldName: "데이터2",  dataType: "text"},
+                { fieldName: "데이터3",  dataType: "text"},
+                { fieldName: "데이터4",  dataType: "text"}
+            ];
+
+            var columns = [
+                {
+                    name: "분류코드",
+                    fieldName: "분류코드",
+                    type: "data",
+                    width: "150",
+                    header: {
+                        text: "분류코드"
+                    }
+                },
+                {
+                    name: "분류명",
+                    fieldName: "분류명",
+                    type: "data",
+                    width: "180",
+                    header: {
+                        text: "분류명"
+                    }
+                },
+                {
+                    name: "코드",
+                    fieldName: "코드",
+                    type: "data",
+                    width: "150",
+                    header: {
+                        text: "코드"
+                    }
+                },
+                {
+                    name: "코드값",
+                    fieldName: "코드값",
+                    type: "data",
+                    width: "150",
+                    header: {
+                        text: "코드값"
+                    }
+                },
+                {
+                    name: "정렬",
+                    fieldName: "정렬",
+                    type: "data",
+                    width: "50",
+                    header: {
+                        text: "정렬"
+                    }
+                },
+                {
+                    name: "사용여부",
+                    fieldName: "사용여부",
+                    type: "data",
+                    width: "100",
+                    editable: false,
+                    renderer: {
+                        type: "check",
+                    },
+                    header: {
+                        text: "사용여부"
+                    }
+                },
+                {
+                    name: "비고",
+                    fieldName: "비고",
+                    type: "data",
+                    width: "100",
+                    header: {
+                        text: "비고"
+                    }
+                },
+                {
+                    name: "데이터1",
+                    fieldName: "데이터1",
+                    type: "data",
+                    width: "100",
+                    header: {
+                        text: "데이터1"
+                    }
+                },
+                {
+                    name: "데이터2",
+                    fieldName: "데이터2",
+                    type: "data",
+                    width: "100",
+                    header: {
+                        text: "데이터2"
+                    }
+                },
+                {
+                    name: "데이터3",
+                    fieldName: "데이터3",
+                    type: "data",
+                    width: "100",
+                    header: {
+                        text: "데이터3"
+                    }
+                },
+                {
+                    name: "데이터4",
+                    fieldName: "데이터4",
+                    type: "data",
+                    width: "100",
+                    header: {
+                        text: "데이터4"
+                    }
+                }               
+            ];
+            
+            var ds = new RealGrid.LocalDataProvider();
+            var grid = new RealGrid.GridView("realgrid");
+            grid.setDataSource(ds);
+            ds.setFields(fields);
+            grid.setColumns(columns);
+
+            // // realgrid-utils.js 유틸 함수를 사용해 필드와 컬럼을 함께 생성할 수 있다.
+            // setFieldsNColumns(ds, grid,
+            //     [
+            //     {"name": "분류코드", "width": "150"}, 
+            //     {"name": "분류명", "width": "180"}, 
+            //     {"name": "코드", "width": "150"}, 
+            //     {"name": "코드값", "width": "150"}, 
+            //     {"name": "정렬", "width": "50"},
+            //     {"name": "사용여부", "width": "50"},
+            //     {"name": "비고", "width": "100"}, 
+            //     {"name": "데이터1","width": "100"},
+            //     {"name": "데이터2", "width": "100"},
+            //     {"name": "데이터3","width": "100"},
+            //     {"name": "데이터4", "width": "100"}
+            // ]
+            // );
+
+            var gridList = [
+                {"분류코드": "USER_STATUS", "분류명": "계정상태", "코드":"NORMAL", "코드값":"활성", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USER_STATUS", "분류명": "계정상태", "코드":"ACCOUNT_LOCK", "코드값":"잠김", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "AUTH_GROUP", "분류명": "권한그룹", "코드":"S0001", "코드값":"시스템관리자 그룹", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "AUTH_GROUP", "분류명": "권한그룹", "코드":"S0002", "코드값":"사용자 그룹", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "LOCALE", "분류명": "로케일", "코드":"ko_KR", "코드값":"대한민국", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "LOCALE", "분류명": "로케일", "코드":"en_US", "코드값":"미국", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "MENU_GROUP", "분류명": "메뉴그룹", "코드":"SYSTEM_MANAGER", "코드값":"시스템관리자 그룹", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "MENU_GROUP", "분류명": "메뉴그룹", "코드":"USER", "코드값":"사용자 그룹", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_YN", "분류명": "사용여부", "코드":"Y", "코드값":"사용", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_YN", "분류명": "사용여부", "코드":"Y", "코드값":"사용안함", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_ROLE", "분류명": "사용자 룰", "코드":"ASP_ACCESS", "코드값":"관리시스템 접근 룰", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_ROLE", "분류명": "사용자 룰", "코드":"SYSTEM_MANAGER", "코드값":"시스템 관리자 룰", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_ROLE", "분류명": "사용자 룰", "코드":"ASP_MANAGER", "코드값":"일반관리자 룰", "정렬":"3", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_ROLE", "분류명": "사용자 룰", "코드":"NORMAL_USER", "코드값":"일반 사용자 룰", "정렬":"4", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "USE_ROLE", "분류명": "사용자 룰", "코드":"API", "코드값":"API 접근 룰", "정렬":"5", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "DEL_YN", "분류명": "삭제여부", "코드":"N", "코드값":"미삭제", "정렬":"1", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""},
+                {"분류코드": "DEL_YN", "분류명": "삭제여부", "코드":"Y", "코드값":"삭제", "정렬":"2", "사용여부":"True", "비고":"", "데이터1":"", "데이터2":"", "데이터3":"", "데이터4":""}
+            ];
+            
+            ds.setRows(gridList);            
+            
+            grid.filteringOptions.selector.showButtons = true;
+            grid.displayOptions.refreshMode = "visibleOnly";
+            grid.displayOptions.emptyMessage = "표시할 데이타가 없습니다.";
+            grid.sortingOptions.showSortOrder = true;
+            grid.sortingOptions.style = "reverse";
+            grid.displayOptions.rowHoverType = "row";    
+            grid.displayOptions.rowResizable = true;
+
+            grid.setEditOptions({
+                insertable: true,
+                appendable : true
+            });
+
+            grid.setEditorOptions({
+                viewGridInside: true
+            })
+
+            grid.onContextMenuPopup = function (grid, x, y, elementName) {
+                console.log(arguments);
+                // realgrid-utils.js 기본 팝업 메뉴 생성
+                setContextMenu(grid);
+                
+            };
+            // realgrid-utils.js 기본 팝업 메뉴 실행
+            grid.onContextMenuItemClicked = onContextMenuClick;          
+        });
+        
+        $(document.body).ready(function() {
+            $('[data-lolayout]').lolayout();
+        });
+    </script>
+</head>
+<body>
+
+<div class="page-root">
+    <div class="page-title">
+        <div class="left"><i class="icon icon-code"></i>&nbsp;<h1>공통코드 관리</h1></div>
+        <div class="right">
+            <div class="la-button-group">
+                <a href="#" class="la-button large"><i class="icon icon-install"></i>&nbsp;<span class="text">저장</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="page-fixed with-title">
+
+        <div data-lolayout="row-1" data-config="{layout:'split-panel', orientation: 'horizontal'}">
+            <div data-split-panel="{height: '85', minHeight:50}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">조회</span></div>
+                            <div class="right">
+                                <div class="la-button-group">
+                                    <a href="#" class="la-button primary"><i class="icon icon-magnifying-glass"></i>&nbsp;<span class="text">조회</span></a>
+                                    <a href="#" class="la-button"><i class="icon icon-cross"></i>&nbsp;<span class="text">취소</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <div class="pad-row">
+                                <div class="la-input-group">
+                                    <label for="input-1-1">검색어</label>
+                                    <input type="text" id="input-1-1" class="la-input" style="width:130px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-splitter="{}"></div>
+            <div data-split-panel="{height: '*'}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad" style="overflow: hidden;">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">코드 목록</span></div>
+                            <div class="right">
+                                <a href="#"><i class="icon icon-circle-with-plus"></i>&nbsp;<span class="text">추가</span></a>&nbsp;&nbsp;
+                                <a href="#"><i class="icon icon-circle-with-minus"></i>&nbsp;<span class="text">삭제</span></a>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">                            
+                            <style>
+                                .rg-root.rg-grid {border:none !important;}
+                            </style>
+                            <div id="realgrid" style="width:100%; height:100%;"></div>                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

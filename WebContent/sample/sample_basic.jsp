@@ -1,0 +1,164 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.css"/>
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-core/dist/luplino-core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.js"></script>
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/jszip.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/domutils.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-lic.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid2.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-utils.js"></script>
+    <link id="theme" href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/realgrid-style.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/tests/samples-columnFiltering.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/data/seriesCol_json.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/overview.js"></script>
+    <script type="text/javascript">
+
+        $(document.body).ready(function() {
+            $('[data-lolayout]').lolayout();
+
+        });
+
+        //realgrid...
+        window.addEventListener('DOMContentLoaded', function () {
+            createGrid("realgrid");
+            setActions && setActions("actions");
+        });
+
+        // function loadData(filename) {
+        //     var reqUrl = "<%=request.getContextPath()%>/sample/assets/plugins/realgrid/data/" + filename; // for S3
+        //     // let reqUrl = "/getData/fileName=" + fileName; // for node
+        //     $.ajax({
+        //         type: "GET",
+        //         url: reqUrl,
+        //         success: function(response)
+        //         {
+        //             dataProvider.setRows(response);
+        //             grid.refreshView();
+        //         }
+        //     });
+        // }
+    </script>
+    <style>
+        #realgrid-page{
+            background-color: #df2222;
+            height: 50px;
+        }
+        #actions {
+            height: 50px;
+        }
+        #realgrid {
+            width: 100%;
+            padding: 5 5 5 5;
+            margin: 5 5 5 5;
+            height: calc(100% - 50px - 10px); /* 10px는 margin */
+            height: -moz-calc(100% - 50px - 10px); /* for Firefox */
+            height: -webkit-calc(100% - 50px - 10px); /* for WebKit */
+            height: -o-calc(100% - 50px - 10px); /* for Opera */
+            height: expression(100% - 50px - 10px); /* IE Old */
+        }	
+        .rg-root {
+              font-size: 14px;
+        }	
+        .small-font-size{
+            font-size: 12px;
+        }
+        .left-column{
+            text-align: left;
+        }
+        .left-column .rg-renderer{
+            padding-left: 10px;		
+        }
+        .right-column{
+            text-align: right;
+        }
+        .center-column{
+            text-align: center;
+        }
+        .bold-column{
+            font-weight: bold;
+        }
+        .red-column{
+            color: red;
+        }
+        .right-column .rg-renderer{
+            padding-right: 10px;		
+        }	
+        .test-style {
+            background: linear-gradient(to right, #96f58F,red);
+        }
+        .rg-signalbar-renderer-bar {
+            fill: #ffa600;
+        }
+        .rg-bar-renderer > span{
+            transform: translate(0, -50%) !important;
+            right : unset !important;
+            left : 15px !important;
+            font-size: 11px;
+            font-weight: bold;
+            color: white;
+        }
+        .rg-bar-renderer-bar {
+            background: rgb(33, 189, 33);
+        }	
+        .proficiency-loss > .rg-bar-renderer > .rg-bar-renderer-bar {
+            background: #df2222;
+        }
+        .rg-icon-renderer > img{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page-root">
+    <div class="page-title">
+        <div class="left"><i class="svg icon-rg"></i>&nbsp;<h1>샘플 - 기본</h1></div>
+        <div class="right">
+            <div class="la-button-group">
+                <a href="<%=request.getContextPath()%>/sample/about.jsp" target="_blank" class="la-button large"><i class="icon icon-dots-three-horizontal"></i>&nbsp;<span class="text">더보기</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="page-fixed with-title">
+
+        <div data-lolayout="row-1" data-config="{layout:'split-panel', orientation: 'horizontal'}">
+            <div data-split-panel="{height: '*'}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad" style="overflow: hidden;">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">리얼그리드 샘플</span></div>
+                            <div class="right"><span class="desc"><strong>RealGrid 2</strong> - v2.5.1</span></div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <style>
+                                .rg-root.rg-grid {border:none !important;}
+                            </style>
+                            <div id="realgrid" style="width:100%; height:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

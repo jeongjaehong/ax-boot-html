@@ -1,0 +1,210 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    
+    <title>Hellow RealGrid!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina-reset.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/plugins/entypo-plus/entypo-plus.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-calendar/dist/luplino-calendar.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.css"/>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-picker/dist/luplino-picker.css"/>
+
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/jquery/jquery-3.4.1.min.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/highchart/highcharts.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-core/dist/luplino-core.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-layout/dist/luplino-layout.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-calendar/dist/luplino-calendar.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-grid/dist/luplino-grid.js"></script>
+    <script src="<%=request.getContextPath()%>/sample/assets/plugins/luplino/luplino-picker/dist/luplino-picker.js"></script>
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/jszip.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/domutils.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-lic.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid2.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/lib/realgrid-utils.js"></script>
+    <link id="theme" href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/realgrid-style.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/sample/assets/css/luplina.css" />
+
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/tests/samples-editor.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/data/json-array.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/data/areatree_json.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/bootstrap-datepicker.ko.min.js"></script>
+    <link href="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/scripts/bootstrap-datepicker3.css" rel="stylesheet">    
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/data/detail_data.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/sample/assets/plugins/realgrid/highchart.js"></script>
+    <script type="text/javascript">
+
+        var picker = new luplino.ui.picker();
+
+        $(document.body).ready(function() {
+            //$('[data-lolayout]').lolayout();
+
+            picker.bind({
+                target: $('[data-lopicker="basic"]'),
+                direction: "top",
+                content: {
+                    width: 200,
+                    margin: 10,
+                    type: 'date',
+                    config: {
+                        control: {
+                            left: '<i class="icon icon-chevron-left"></i>',
+                            yearTmpl: '%s년',
+                            monthTmpl: '%s',
+                            right: '<i class="icon icon-chevron-right"></i>'
+                        },
+                        lang: {
+                            yearTmpl: "%s년",
+                            months: ["1월","2월","3월","4월","5월","6월","7월","8월","9월","10월","11월","12월"],
+                            dayTmpl: "%s"
+                        }
+                    }
+                },
+                onStateChanged: function () {
+
+                },
+                btns: {
+                    today: {
+                        label: "Today", onClick: function () {
+                            var today = new Date();
+                            this.self
+                                .setContentValue(this.item.id, 0, luplino.util.date(today, {"return": "yyyy-mm-dd"}))
+                                .setContentValue(this.item.id, 1, luplino.util.date(today, {"return": "yyyy-mm-dd"}))
+                                .close()
+                            ;
+                        }
+                    },
+                    thisMonth: {
+                        label: "This Month", onClick: function () {
+                            var today = new Date();
+                            this.self
+                                .setContentValue(this.item.id, 0, luplino.util.date(today, {"return": "yyyy-mm-01"}))
+                                .setContentValue(this.item.id, 1, luplino.util.date(today, {"return": "yyyy-mm"})
+                                    + '-'
+                                    + luplino.util.daysOfMonth(today.getFullYear(), today.getMonth()))
+                                .close();
+                        }
+                    },
+                    ok: {label: "Close", theme: "default"}
+                }
+            });
+        });
+
+        //realgrid...
+        window.addEventListener('DOMContentLoaded', function () {            
+            createGrid("realgrid");            
+
+            $('[data-lolayout]').lolayout({
+                onResize:function(){
+                    //this.splitPanel의 배열값으로 저장됩니다. splitter값을 포함하여
+                    //3개의 패널이 있다면 splitter는 2개이기 때문에 배열값은 5개를 가집니다.
+                    //그리드가 위치한 패널이 만약 0번째의 사이즈를 알고 싶다면 아래와 같이 변경된 값을 반환합니다.
+                    //console.log(this.splitPanel[4].__width);
+                    chart.refresh();
+                    grid.refresh();
+                }
+            });
+
+            //setActions && setActions("actions");
+        });
+    </script>
+</head>
+<body>
+
+<div class="page-root">
+    <div class="page-title">
+        <div class="left"><i class="icon icon-clipboard"></i>&nbsp;<h1>종사자현황상세</h1></div>
+        <div class="right">
+            <div class="la-button-group">
+                <a href="#" class="la-button large"><i class="icon icon-plus"></i>&nbsp;<span class="text">추가</span></a>
+                <a href="#" class="la-button large"><i class="icon icon-pencil"></i>&nbsp;<span class="text">수정</span></a>
+                <a href="#" class="la-button large"><i class="icon icon-clipboard"></i>&nbsp;<span class="text">복사</span></a>
+                <span class="group-hr"></span>
+                <a href="#" class="la-button large danger"><i class="icon icon-trash"></i>&nbsp;<span class="text">삭제</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="page-fixed with-title">
+
+        <div data-lolayout="row-1" data-config="{layout:'split-panel', orientation: 'horizontal'}">
+            <div data-split-panel="{height: '50', minHeight:50}">
+                <div class="pad-cont full-height">
+                    <div class="pad">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">조회</span></div>
+                            <div class="right">
+                                <div class="la-button-group">
+                                    <a href="#" class="la-button primary"><i class="icon icon-magnifying-glass"></i>&nbsp;<span class="text">조회</span></a>
+                                    <a href="#" class="la-button"><i class="icon icon-cross"></i>&nbsp;<span class="text">취소</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <div class="pad-row">
+                                <div class="la-input-group">
+                                    <label for="input-1-1">단체명</label>
+                                    <input type="text" id="input-1-1" class="la-input" style="width:130px;" />
+                                </div>
+                                <div class="la-input-group">
+                                    <label for="input-1-2">연도</label>
+                                    <input type="text" id="input-1-2" class="la-input" style="width:130px;" />
+                                </div>
+                                <div class="la-input-group">
+                                    <label for="input-1-3">항목</label>
+                                    <input type="text" id="input-1-3" class="la-input" style="width:130px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-splitter="{}"></div>
+            <div data-split-panel="{height: '*'}">
+
+                <div class="pad-cont full-height">
+                    <div class="pad" style="overflow: hidden;">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">연도별 추이</span></div>
+                            <div class="right"><span class="desc"><strong>RealGrid 2</strong> - v2.5.1</span></div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <style>
+                                .rg-root.rg-grid {border:none !important;}
+                            </style>
+                            <div id="container" style="width:100%; height:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div data-splitter="{}"></div>
+            <div data-split-panel="{height: '300', minHeight:50}">
+                <div class="pad-cont full-height">
+                    <div class="pad" style="overflow: hidden;">
+                        <div class="pad-head">
+                            <div class="left"><span class="title">단체별 종사자</span></div>
+                            <div class="right"><span class="desc"><strong>RealGrid 2</strong> - v2.5.1</span></div>
+                        </div>
+                        <div class="pad-body with-head">
+                            <style>
+                                .rg-root.rg-grid {border:none !important;}
+                            </style>
+                            <div id="realgrid" style="width:100%; height:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
