@@ -319,7 +319,7 @@
                 },
                 syncLabel = function (queIdx) {
                     this.queue[queIdx].$displayLabel
-                        .html(getLabel.call(this, queIdx));
+                        .jsp(getLabel.call(this, queIdx));
                 },
                 focusWord = function (queIdx, searchWord) {
                     var options = [], i = -1, l = this.queue[queIdx].indexedOptions.length - 1, n;
@@ -517,7 +517,7 @@
                         }
                         else {
                             item.$displayLabel
-                                .html(getLabel.call(this, queIdx));
+                                .jsp(getLabel.call(this, queIdx));
                             item.options = syncSelectOptions.call(this, queIdx, item.options);
 
                             alignSelectDisplay.call(this);
@@ -600,7 +600,7 @@
                             });
 
                             item.optionItemLength = focusIndex;
-                            item.$select.html(po.join(''));
+                            item.$select.jsp(po.join(''));
                         }
                         else {
                             /// select > options 태그로 스크립트 options를 만들어주는 역할
@@ -773,7 +773,7 @@
 
 
                             item.$displayLabel
-                                .html(getLabel.call(this, this.activeSelectQueueIndex));
+                                .jsp(getLabel.call(this, this.activeSelectQueueIndex));
                             item.options = syncSelectOptions.call(this, this.activeSelectQueueIndex, O.options);
 
                             alignSelectDisplay.call(this);
@@ -785,7 +785,7 @@
                             data.multiple = item.multiple;
                             data.lang = item.lang;
                             data.options = item.options;
-                            this.activeSelectOptionGroup.find('[data-els="content"]').html(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
+                            this.activeSelectOptionGroup.find('[data-els="content"]').jsp(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
                         }
                     }).bind(this));
                 };
@@ -839,7 +839,7 @@
 
                     data.options = item.options;
                     this.activeSelectOptionGroup = SELECT.tmpl.get.call(this, "optionGroupTmpl", data);
-                    this.activeSelectOptionGroup.find('[data-els="content"]').html(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
+                    this.activeSelectOptionGroup.find('[data-els="content"]').jsp(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
                     this.activeSelectQueueIndex = queIdx;
 
                     alignSelectOptionGroup.call(this, "append"); // alignSelectOptionGroup 에서 body append

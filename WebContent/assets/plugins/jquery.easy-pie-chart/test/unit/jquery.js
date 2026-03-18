@@ -15,7 +15,7 @@ describe('Unit testing jQuery version of easy pie chart', function() {
 		beforeEach(createInstance());
 
 		it('should insert a canvas element', function() {
-			expect($el.html()).toContain('canvas');
+			expect($el.jsp()).toContain('canvas');
 		});
 	});
 

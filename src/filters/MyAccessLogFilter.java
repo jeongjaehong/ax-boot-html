@@ -12,7 +12,7 @@ import java.lang.reflect.Array;
 import java.util.Enumeration;
 
 public class MyAccessLogFilter extends AccessLogFilter {
-	private static Log _logger = LogFactory.getLog(framework.filter.AccessLogFilter.class);
+	private static Log _logger = LogFactory.getLog(MyAccessLogFilter.class);
 
 	private Log getLogger() {
 		return _logger;
@@ -38,6 +38,8 @@ public class MyAccessLogFilter extends AccessLogFilter {
 			// this.writeHeader(httpReq);
 			// this.writeAttribute(httpReq);
 			this.writeParameter(httpReq);
+		}else{
+			getLogger().debug ("DebugEnabled is false");
 		}
 
 		//super.doFilter(req, res, chain);

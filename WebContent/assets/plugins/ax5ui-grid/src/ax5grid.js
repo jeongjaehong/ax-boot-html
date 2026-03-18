@@ -145,7 +145,7 @@
                         instanceId: this.id
                     };
 
-                    this.$target.html(GRID.tmpl.get("main", data));
+                    this.$target.jsp(GRID.tmpl.get("main", data));
 
                     // 그리드 패널 프레임의 각 엘리먼트를 캐쉬합시다.
                     this.$ = {

@@ -314,7 +314,7 @@
                 onSearch = function (queIdx, searchWord) {
                     this.queue[queIdx].waitOptions = true;
 
-                    this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                    this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                         COMBOBOX.tmpl.get.call(this, "option", this.queue[queIdx], this.queue[queIdx].columnKeys)
                     ));
 
@@ -356,7 +356,7 @@
                         data.lang = item.lang;
                         data.options = item.options;
 
-                        this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                        this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                             COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)
                         ));
 
@@ -584,7 +584,7 @@
                                 }
                             });
                             item.optionItemLength = focusIndex;
-                            item.$select.html(po.join(''));
+                            item.$select.jsp(po.join(''));
                         }
                         else {
                             /// select > options 태그로 스크립트 options를 만들어주는 역할
@@ -1060,7 +1060,7 @@
                         }
                         else {
                             item.$displayLabel
-                                .html(getLabel.call(this, queIdx));
+                                .jsp(getLabel.call(this, queIdx));
                             item.options = syncComboboxOptions.call(this, queIdx, item.options);
                         }
 
@@ -1189,11 +1189,11 @@
                             data.lang = item.lang;
                             data.options = item.options;
                             /*
-                             this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                             this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                              ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)
                              ));
                              */
-                            this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                            this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                                 COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)
                             ));
                         }
@@ -1250,8 +1250,8 @@
 
                     //this.activecomboboxOptionGroup = jQuery(ax5.mustache.render(COMBOBOX.tmpl["optionGroup"].call(this, item.columnKeys), data));
                     this.activecomboboxOptionGroup = jQuery(COMBOBOX.tmpl.get.call(this, "optionGroup", data, item.columnKeys));
-                    //this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)));
-                    this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                    //this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)));
+                    this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                         COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)
                     ));
                     this.activecomboboxQueueIndex = queIdx;

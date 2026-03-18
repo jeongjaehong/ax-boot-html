@@ -18,7 +18,7 @@ That's all. WSC will appear on the editor toolbar and will be ready to use.
 License
 -------
 
-Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.html), [LGPL](http://www.gnu.org/licenses/lgpl.html) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.html).
+Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.jsp), [LGPL](http://www.gnu.org/licenses/lgpl.jsp) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.jsp).
 
 See LICENSE.md for more information.
 

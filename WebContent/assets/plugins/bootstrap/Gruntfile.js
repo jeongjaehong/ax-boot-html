@@ -149,7 +149,7 @@ module.exports = function (grunt) {
       options: {
         inject: 'js/tests/unit/phantom.js'
       },
-      files: 'js/tests/index.html'
+      files: 'js/tests/index.jsp'
     },
 
     less: {
@@ -342,8 +342,8 @@ module.exports = function (grunt) {
         cwd: '_gh_pages',
         dest: '_gh_pages',
         src: [
-          '**/*.html',
-          '!examples/**/*.html'
+          '**/*.jsp',
+          '!examples/**/*.jsp'
         ]
       }
     },
@@ -355,11 +355,11 @@ module.exports = function (grunt) {
       },
       customizerVars: {
         src: 'docs/_pug/customizer-variables.pug',
-        dest: 'docs/_includes/customizer-variables.html'
+        dest: 'docs/_includes/customizer-variables.jsp'
       },
       customizerNav: {
         src: 'docs/_pug/customizer-nav.pug',
-        dest: 'docs/_includes/nav/customize.html'
+        dest: 'docs/_includes/nav/customize.jsp'
       }
     },
 
@@ -371,7 +371,7 @@ module.exports = function (grunt) {
           'Element "img" is missing required attribute "src".'
         ]
       },
-      src: '_gh_pages/**/*.html'
+      src: '_gh_pages/**/*.jsp'
     },
 
     watch: {
@@ -396,7 +396,7 @@ module.exports = function (grunt) {
           throttled: 10,
           maxRetries: 3,
           maxPollRetries: 4,
-          urls: ['http://127.0.0.1:3000/js/tests/index.html?hidepassed'],
+          urls: ['http://127.0.0.1:3000/js/tests/index.jsp?hidepassed'],
           browsers: grunt.file.readYAML('grunt/sauce_browsers.yml')
         }
       }

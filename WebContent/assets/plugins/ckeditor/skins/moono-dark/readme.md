@@ -46,6 +46,6 @@ License
 
 Copyright (c) 2003-2014, CKSource - Frederico Knabben. All rights reserved.
 
-Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.html), [LGPL](http://www.gnu.org/licenses/lgpl.html) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.html).
+Licensed under the terms of any of the following licenses at your choice: [GPL](http://www.gnu.org/licenses/gpl.jsp), [LGPL](http://www.gnu.org/licenses/lgpl.jsp) and [MPL](http://www.mozilla.org/MPL/MPL-1.1.jsp).
 
 See LICENSE.md for more information.

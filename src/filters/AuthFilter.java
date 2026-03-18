@@ -40,6 +40,8 @@ public class AuthFilter implements Filter {
         String ctx = req.getContextPath();
         String path = req.getRequestURI().substring(ctx.length());
 
+        getLogger().debug("접속 요청된 경로: " + path);
+
         // 로그인 없이 허용할 경로들
         if (isAllowedPath(path)) {
             getLogger().debug("로그인 없이 접속이 허용된 경로: " + path);

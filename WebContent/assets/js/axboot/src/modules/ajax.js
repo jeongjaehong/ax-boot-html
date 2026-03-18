@@ -39,7 +39,6 @@
  * ```
  */
 axboot.ajax = (function () {
-
     var queue = [];
     var defaultOption = {
         apiType: "",

@@ -37,19 +37,31 @@ public class LoginDao extends SelectDaoSupport {
 	 * @throws SQLException
 	 */
 	public RecordSet selectUserInfobyUserid(String p_userid, String p_password) throws SQLException {
-		SQLCallableStatement cstmt = null;
 		SelectConditionObject cond = new SelectConditionObject();
-
 		StringBuilder query = new StringBuilder();
-		query.append("{call pkg_system.p_users_r(? /* p_userid*/, ? /* p_password*/, ? /*ref cursor*/, ?/* ret code */, ? /*ret msg*/ )}");
 
-		cstmt = getConnectionManager().createCallableStatement(query.toString());
-
-		cond.setObject(p_userid);
+		query.append("\n/* " + this.getClass().toString() + ".selectUserInfobyUserid() */\n");
+		query.append(" SELECT  ");
+		query.append("      u.empl_code as user_id ");
+		query.append("      ,u.empl_code as empl_code ");
+		query.append("      ,u.empl_name as user_name ");
+		query.append("      ,u.pass_numb as password ");
+		query.append("      ,u.dept_code as dept_id ");
+		query.append("      ,null as dept_name ");
+		query.append("      ,null as position ");
+		query.append("      ,null as mobile_number ");
+		query.append("      ,null as email ");
+		query.append("      ,null as nw_mail_pwd ");
+		query.append("      ,case when nvl(u.dele_gubn, '1') = '1' then 'Yes' else 'No' end as login_allow_yn ");
+		query.append("      ,case when u.pass_numb = s.p(?) then 'Yes' else 'No' end as pwdchk ");
 		cond.setObject(p_password);
+		query.append(" FROM  drerp.cmuser u ");
+		query.append(" WHERE 1 = 1 ");
+		query.append("   AND (u.logi_name = ? OR u.empl_code = ?) ");
+		cond.setObject(p_userid);
+		cond.setObject(p_userid);
 
-		cstmt.set(cond.getParameter());
-		return cstmt.executeQuery();
+		return select(query.toString(), cond.getParameter());
 
 	}
 

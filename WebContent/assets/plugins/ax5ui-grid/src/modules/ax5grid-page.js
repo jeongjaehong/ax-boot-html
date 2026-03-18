@@ -88,7 +88,7 @@
                 page.hasPage = true;
             }
 
-            this.$["page"]["navigation"].html(GRID.tmpl.get("page_navigation", page));
+            this.$["page"]["navigation"].jsp(GRID.tmpl.get("page_navigation", page));
             this.$["page"]["navigation"].find("[data-ax5grid-page-move]").on("click", function () {
                 var act = this.getAttribute("data-ax5grid-page-move");
                 onclickPageMove.call(self, act);
@@ -107,7 +107,7 @@
             toRowIndex = totalElements;
         }
 
-        this.$["page"]["status"].html(GRID.tmpl.get("page_status", {
+        this.$["page"]["status"].jsp(GRID.tmpl.get("page_status", {
             fromRowIndex: U.number(fromRowIndex + 1, {"money": true}),
             toRowIndex: U.number(toRowIndex, {"money": true}),
             totalElements: U.number(totalElements, {"money": true}),

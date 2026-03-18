@@ -610,7 +610,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         var calendarConfig = jQuery.extend({}, cfg.calendar, { displayDate: new Date() });
                         var input = item.$target.get(0).tagName.toUpperCase() == "INPUT" ? item.$target : item.$target.find('input[type]');
@@ -647,7 +647,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         // secure-num bind
                         item.pickerContent.find('[data-secure-num-target]').each(function () {
@@ -680,7 +680,7 @@
 
                             po.push('<div style="clear:both;"></div>');
 
-                            $(this).html(po.join('')).on("click", '[data-secure-num-value]', function () {
+                            $(this).jsp(po.join('')).on("click", '[data-secure-num-value]', function () {
                                 var act = this.getAttribute("data-secure-num-value");
                                 var _input = item.$target.get(0).tagName.toUpperCase() == "INPUT" ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -710,7 +710,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         var keyArray = [[{ value: "`", shiftValue: "~" }, { value: "1", shiftValue: "!" }, { value: "2", shiftValue: "@" }, { value: "3", shiftValue: "#" }, { value: "4", shiftValue: "$" }, { value: "5", shiftValue: "%" }, { value: "6", shiftValue: "^" }, { value: "7", shiftValue: "&" }, { value: "8", shiftValue: "*" }, { value: "9", shiftValue: "(" }, { value: "0", shiftValue: ")" }, { value: "-", shiftValue: "_" }, { value: "=", shiftValue: "+" }, { label: "&#x02190", fn: "back" }], [{ value: "q", shiftValue: "Q" }, { value: "w", shiftValue: "W" }, { value: "e", shiftValue: "E" }, { value: "r", shiftValue: "R" }, { value: "t", shiftValue: "T" }, { value: "y", shiftValue: "Y" }, { value: "u", shiftValue: "U" }, { value: "i", shiftValue: "I" }, { value: "o", shiftValue: "O" }, { value: "p", shiftValue: "P" }, { value: "[", shiftValue: "{" }, { value: "]", shiftValue: "}" }, { value: "\\", shiftValue: "|" }], [{ label: "Clear", fn: "clear" }, { value: "a", shiftValue: "A" }, { value: "s", shiftValue: "S" }, { value: "d", shiftValue: "D" }, { value: "f", shiftValue: "F" }, { value: "g", shiftValue: "G" }, { value: "h", shiftValue: "H" }, { value: "j", shiftValue: "J" }, { value: "k", shiftValue: "K" }, { value: "l", shiftValue: "L" }, { value: ";", shiftValue: ":" }, { value: "'", shiftValue: "\"" }], [{ label: "Shift", fn: "shift" }, { value: "z", shiftValue: "Z" }, { value: "x", shiftValue: "X" }, { value: "c", shiftValue: "C" }, { value: "v", shiftValue: "V" }, { value: "b", shiftValue: "B" }, { value: "n", shiftValue: "N" }, { value: "m", shiftValue: "M" }, { value: ",", shiftValue: "<" }, { value: ".", shiftValue: ">" }, { value: "/", shiftValue: "?" }, { label: "Close", fn: "close" }]];
                         var specialArray = [{ label: "&#x02190", fn: "back" }, { label: "C", fn: "clear" }];
@@ -751,9 +751,9 @@
                             var isShiftKey = false;
                             var toggleShift = function toggleShift() {
                                 isShiftKey = !isShiftKey;
-                                $this.html(getKeyBoard(isShiftKey));
+                                $this.jsp(getKeyBoard(isShiftKey));
                             };
-                            $this.html(getKeyBoard(isShiftKey)).on("mousedown", '[data-keyboard-value]', function () {
+                            $this.jsp(getKeyBoard(isShiftKey)).on("mousedown", '[data-keyboard-value]', function () {
                                 var act = this.getAttribute("data-keyboard-value");
                                 var _input = item.$target.get(0).tagName.toUpperCase() == "INPUT" ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -794,7 +794,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         // secure-num bind
                         item.pickerContent.find('[data-numpad-target]').each(function () {
@@ -826,7 +826,7 @@
 
                             po.push('<div style="clear:both;"></div>');
 
-                            $(this).html(po.join('')).on("mousedown", '[data-numpad-value]', function () {
+                            $(this).jsp(po.join('')).on("mousedown", '[data-numpad-value]', function () {
                                 var act = this.getAttribute("data-numpad-value");
                                 var _input = item.$target.get(0).tagName.toUpperCase() == "INPUT" ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -893,9 +893,9 @@
 
                     if (U.isFunction(item.content)) {
                         // 함수타입
-                        item.pickerContent.html("Loading..");
+                        item.pickerContent.jsp("Loading..");
                         pickerContent["@fn"].call(this, queIdx, function (html) {
-                            item.pickerContent.html(html);
+                            item.pickerContent.jsp(html);
                         });
                     } else {
                         if (item.content.type in pickerContent) {

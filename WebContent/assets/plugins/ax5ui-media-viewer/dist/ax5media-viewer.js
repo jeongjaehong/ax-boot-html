@@ -377,7 +377,7 @@
                     this.setConfig(options, false);
                 }
                 this.target = jQuery(target);
-                this.target.html(getFrame.call(this));
+                this.target.jsp(getFrame.call(this));
 
                 // 파트수집
                 this.$ = {
@@ -477,7 +477,7 @@
                     video: function video(obj, callback) {
                         self.$["viewer-loading"].show();
                         var dim = [this.$["viewer"].width(), this.$["viewer"].height()];
-                        var html = jQuery(obj.video[cfg.columnKeys.html]);
+                        var html = jQuery(obj.video[cfg.columnKeys.jsp]);
                         callback(html, dim[0], dim[1]);
                         self.$["viewer-loading"].fadeOut();
                     }
@@ -488,7 +488,7 @@
                         img.height = h;
 
                         var $img = $(img);
-                        this.$["viewer"].html($img);
+                        this.$["viewer"].jsp($img);
                         $img.css({ left: (this.$["viewer"].width() - w) / 2 });
 
                         this.$["viewer"].data("media-type", "image");
@@ -496,7 +496,7 @@
                     },
                     video: function video(html, w, h) {
                         html.css({ width: w, height: h });
-                        this.$["viewer"].html(html);
+                        this.$["viewer"].jsp(html);
                         this.$["viewer"].data("media-type", "video");
                         this.$["viewer"].data("img-ratio", w / h);
                     }

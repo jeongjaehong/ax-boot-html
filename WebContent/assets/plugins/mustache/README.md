@@ -10,7 +10,7 @@
 
 We call it "logic-less" because there are no if statements, else clauses, or for loops. Instead there are only tags. Some tags are replaced with a value, some nothing, and others a series of values.
 
-For a language-agnostic overview of mustache's template syntax, see the `mustache(5)` [manpage](http://mustache.github.com/mustache.5.html).
+For a language-agnostic overview of mustache's template syntax, see the `mustache(5)` [manpage](http://mustache.github.com/mustache.5.jsp).
 
 ## Where to use mustache.js?
 
@@ -80,10 +80,10 @@ Hello {{ name }}!
 
 ```js
 function loadUser() {
-  var template = $('#template').html();
+  var template = $('#template').jsp();
   Mustache.parse(template);   // optional, speeds up future uses
   var rendered = Mustache.render(template, {name: "Luke"});
-  $('#target').html(rendered);
+  $('#target').jsp(rendered);
 }
 ```
 
@@ -95,7 +95,7 @@ If your templates reside in individual files, you can load them asynchronously a
 function loadUser() {
   $.get('template.mst', function(template) {
     var rendered = Mustache.render(template, {name: "Luke"});
-    $('#target').html(rendered);
+    $('#target').jsp(rendered);
   });
 }
 ```
@@ -439,7 +439,7 @@ Consider the following contrived example:
 
 Here we have a list with three items. The first item uses the default tag style, the second uses ERB style as defined by the Set Delimiter tag, and the third returns to the default style after yet another Set Delimiter declaration.
 
-According to [ctemplates](http://google-ctemplate.googlecode.com/svn/trunk/doc/howto.html), this "is useful for languages like TeX, where double-braces may occur in the text and are awkward to use for markup."
+According to [ctemplates](http://google-ctemplate.googlecode.com/svn/trunk/doc/howto.jsp), this "is useful for languages like TeX, where double-braces may occur in the text and are awkward to use for markup."
 
 Custom delimiters may not contain whitespace or the equals sign.
 
@@ -478,10 +478,10 @@ mustache.js is shipped with a node based command line tool. It might be installe
 
 ```bash
 $ npm install -g mustache
-$ mustache dataView.json myTemplate.mustache > output.html
+$ mustache dataView.json myTemplate.mustache > output.jsp
 
 # also supports stdin
-$ cat dataView.json | mustache - myTemplate.mustache > output.html
+$ cat dataView.json | mustache - myTemplate.mustache > output.jsp
 ```
 
 or as a package.json `devDependency` in a build process maybe?
@@ -492,7 +492,7 @@ $ npm install mustache --save-dev
 ```json
 {
   "scripts": {
-    "build": "mustache dataView.json myTemplate.mustache > public/output.html"
+    "build": "mustache dataView.json myTemplate.mustache > public/output.jsp"
   }
 }
 ```

@@ -116,6 +116,10 @@ public class SetCharacterEncodingFilter implements Filter {
 		HttpServletRequest httpReq = (HttpServletRequest) request;
 		HttpServletResponse httpRes = (HttpServletResponse) response;
 
+		if (getLogger().isDebugEnabled()) {
+			getLogger().debug("SetCharacterEncodingFilter: " + httpReq.getMethod() + " " + httpReq.getRequestURI());
+		}
+
 		addSameSite(httpRes, "None");
 
 		// Pass control on to the next filter

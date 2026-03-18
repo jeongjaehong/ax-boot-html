@@ -135,7 +135,7 @@ function fixCloneNodeIssues( src, dest ) {
 		// element in IE9, the outerHTML strategy above is not sufficient.
 		// If the src has innerHTML and the destination does not,
 		// copy the src.innerHTML into the dest.innerHTML. #10324
-		if ( support.html5Clone && ( src.innerHTML && !jQuery.trim( dest.innerHTML ) ) ) {
+		if ( support.jsp5Clone && ( src.innerHTML && !jQuery.trim( dest.innerHTML ) ) ) {
 			dest.innerHTML = src.innerHTML;
 		}
 
@@ -185,7 +185,7 @@ function domManip( collection, args, callback, ignored ) {
 		return collection.each( function( index ) {
 			var self = collection.eq( index );
 			if ( isFunction ) {
-				args[ 0 ] = value.call( this, index, self.html() );
+				args[ 0 ] = value.call( this, index, self.jsp() );
 			}
 			domManip( self, args, callback, ignored );
 		} );
@@ -293,7 +293,7 @@ jQuery.extend( {
 		var destElements, node, clone, i, srcElements,
 			inPage = jQuery.contains( elem.ownerDocument, elem );
 
-		if ( support.html5Clone || jQuery.isXMLDoc( elem ) ||
+		if ( support.jsp5Clone || jQuery.isXMLDoc( elem ) ||
 			!rnoshimcache.test( "<" + elem.nodeName + ">" ) ) {
 
 			clone = elem.cloneNode( true );
@@ -507,11 +507,11 @@ jQuery.fn.extend( {
 
 			// See if we can take a shortcut and just use innerHTML
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
-				( support.htmlSerialize || !rnoshimcache.test( value )  ) &&
+				( support.jspSerialize || !rnoshimcache.test( value )  ) &&
 				( support.leadingWhitespace || !rleadingWhitespace.test( value ) ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-				value = jQuery.htmlPrefilter( value );
+				value = jQuery.jspPrefilter( value );
 
 				try {
 					for ( ; i < l; i++ ) {

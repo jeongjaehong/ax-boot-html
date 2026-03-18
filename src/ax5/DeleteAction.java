@@ -133,7 +133,7 @@ public class DeleteAction extends Action {
 
             HashMap<String, Object> result = new HashMap<String, Object>();
             String host = "http://" + getRequest().getHeader("host");
-            String target_db = "dpms";
+            String target_db = "default";
 
             if (map.containsKey("target_db") && StringUtil.isNotEmpty(map.get("target_db").toString())) {
                 target_db = (String) map.get("target_db");
@@ -152,8 +152,8 @@ public class DeleteAction extends Action {
             }
 
         } catch (Exception e) {
-            this.getConnectionManager("dpms").rollback();
-            DBLog.errorLog(getRequest(), getConnectionManager("dpms"), e, this);
+            this.getConnectionManager("default").rollback();
+            DBLog.errorLog(getRequest(), getConnectionManager("default"), e, this);
             return false;
         }
     }

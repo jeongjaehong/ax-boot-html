@@ -4446,7 +4446,7 @@ Snap.plugin(function (Snap, Element, Paper, glob, Fragment) {
      | "M10,20L30,40"
      * This example features two commands: `M`, with arguments `(10, 20)` and `L` with arguments `(30, 40)`. Uppercase letter commands express coordinates in absolute terms, while lowercase commands express them in relative terms from the most recently declared coordinates.
      *
-     # <p>Here is short list of commands available, for more details see <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG path string format</a> or <a href="https://developer.mozilla.org/en/SVG/Tutorial/Paths">article about path strings at MDN</a>.</p>
+     # <p>Here is short list of commands available, for more details see <a href="http://www.w3.org/TR/SVG/paths.jsp#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG path string format</a> or <a href="https://developer.mozilla.org/en/SVG/Tutorial/Paths">article about path strings at MDN</a>.</p>
      # <table><thead><tr><th>Command</th><th>Name</th><th>Parameters</th></tr></thead><tbody>
      # <tr><td>M</td><td>moveto</td><td>(x y)+</td></tr>
      # <tr><td>Z</td><td>closepath</td><td>(none)</td></tr>
@@ -5695,7 +5695,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
     }
     function a2c(x1, y1, rx, ry, angle, large_arc_flag, sweep_flag, x2, y2, recursive) {
         // for more information of where this math came from visit:
-        // http://www.w3.org/TR/SVG11/implnote.html#ArcImplementationNotes
+        // http://www.w3.org/TR/SVG11/implnote.jsp#ArcImplementationNotes
         var _120 = PI * 120 / 180,
             rad = PI / 180 * (+angle || 0),
             res = [],
@@ -5791,7 +5791,7 @@ Snap.plugin(function (Snap, Element, Paper, glob) {
     }
     
     // Returns bounding box of cubic bezier curve.
-    // Source: http://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.html
+    // Source: http://blog.hackers-cafe.net/2009/06/how-to-calculate-bezier-curves-bounding.jsp
     // Original version: NISHIO Hirokazu
     // Modifications: https://github.com/timo22345
     function curveDim(x0, y0, x1, y1, x2, y2, x3, y3) {

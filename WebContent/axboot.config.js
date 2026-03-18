@@ -6,8 +6,8 @@
                 id    : "dashboard",
                 progNm: '홈',
                 menuNm: '홈',
-                progPh: '/dashboard.html',
-                url   : '/dashboard.html?progCd=dashboard',
+                progPh: '/dashboard.jsp',
+                url   : '/dashboard.jsp?progCd=dashboard',
                 status: "on",
                 fixed : true
             }
@@ -43,7 +43,7 @@
                 width: 500,
                 height: 500,
                 iframe: {
-                    url: "/common/zipcode.html",
+                    url: "/common/zipcode.jsp",
                     method:"GET"        //html 간 통신때문에 get 방식을 사용합니다.
                 }
             },
@@ -51,7 +51,7 @@
                 width: 500,
                 height: 500,
                 iframe: {
-                    url: "/_samples/modal.html",
+                    url: "/_samples/modal.jsp",
                     method:"GET"        //html 간 통신때문에 get 방식을 사용합니다.
                 },
                 header: false
@@ -60,7 +60,7 @@
                 width: 600,
                 height: 400,
                 iframe: {
-                    url: "/system/system-config-common-code-modal.html",
+                    url: "/system/system-config-common-code-modal.jsp",
                     method:"GET"        //html 간 통신때문에 get 방식을 사용합니다.
                 },
                 header: false

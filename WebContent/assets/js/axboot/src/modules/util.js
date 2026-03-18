@@ -11,7 +11,7 @@ axboot.addressPopup = {
             width:500,
             height:600,
             iframe: {
-                url: "/html/common/zipcode.html"
+                url: "/html/common/zipcode.jsp"
             },
             header: {
                 title: "우편번호 찾기"

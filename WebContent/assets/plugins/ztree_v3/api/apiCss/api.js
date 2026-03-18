@@ -456,7 +456,7 @@ var apiContent = {
 		if (!node.showAPI) return false;
 		var o = $("#" + node.tId + "_a");
 		if (!!apiContent.apiCache[node.tId]) {
-			apiContent.tmpDiv.html(apiContent.apiCache[node.tId]);
+			apiContent.tmpDiv.jsp(apiContent.apiCache[node.tId]);
 			apiContent.overlayShow(o, (apiContent.lastNode === node));
 		} else {
 			apiContent.overlayAjax(treeId, node);
@@ -564,7 +564,7 @@ var apiContent = {
 		node.isAjax = true;
 		$.ajax({
 			type: "get",
-			url: "" + lang + "/" + node.tt.replace("$.", "") + ".html",
+			url: "" + lang + "/" + node.tt.replace("$.", "") + ".jsp",
 			data: null,
 			dataType: "text",
 			success: function(msg) {
@@ -579,7 +579,7 @@ var apiContent = {
 				} else {
 					apiContent.tmpDiv.empty();
 				}
-				apiContent.tmpDiv.html(msg);
+				apiContent.tmpDiv.jsp(msg);
 				apiContent.overlayShow(o, false);
 				apiContent.apiCache[node.tId] = msg;
 				node.isAjax = false;

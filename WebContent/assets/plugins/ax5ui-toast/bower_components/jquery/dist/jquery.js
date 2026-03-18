@@ -637,7 +637,7 @@ var filterMatchExpr = {
 var rpseudo = new RegExp( pseudos );
 
 // CSS escapes
-// https://www.w3.org/TR/CSS21/syndata.html#escaped-characters
+// https://www.w3.org/TR/CSS21/syndata.jsp#escaped-characters
 
 var runescape = new RegExp( "\\\\[\\da-fA-F]{1,6}" + whitespace +
 	"?|\\\\([^\\r\\n\\f])", "g" ),
@@ -974,7 +974,7 @@ jQuery.extend( {
 			i = 0,
 
 			// Attribute names can contain non-HTML whitespace characters
-			// https://html.spec.whatwg.org/multipage/syntax.html#attributes-2
+			// https://html.spec.whatwg.org/multipage/syntax.jsp#attributes-2
 			attrNames = value && value.match( rnothtmlwhite );
 
 		if ( attrNames && elem.nodeType === 1 ) {
@@ -1338,16 +1338,16 @@ function createDisabledPseudo( disabled ) {
 	return function( elem ) {
 
 		// Only certain elements can match :enabled or :disabled
-		// https://html.spec.whatwg.org/multipage/scripting.html#selector-enabled
-		// https://html.spec.whatwg.org/multipage/scripting.html#selector-disabled
+		// https://html.spec.whatwg.org/multipage/scripting.jsp#selector-enabled
+		// https://html.spec.whatwg.org/multipage/scripting.jsp#selector-disabled
 		if ( "form" in elem ) {
 
 			// Check for inherited disabledness on relevant non-disabled elements:
 			// * listed form-associated elements in a disabled fieldset
-			//   https://html.spec.whatwg.org/multipage/forms.html#category-listed
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-fe-disabled
+			//   https://html.spec.whatwg.org/multipage/forms.jsp#category-listed
+			//   https://html.spec.whatwg.org/multipage/forms.jsp#concept-fe-disabled
 			// * option elements in a disabled optgroup
-			//   https://html.spec.whatwg.org/multipage/forms.html#concept-option-disabled
+			//   https://html.spec.whatwg.org/multipage/forms.jsp#concept-option-disabled
 			// All such elements have a "form" property.
 			if ( elem.parentNode && elem.disabled === false ) {
 
@@ -4325,8 +4325,8 @@ if ( !documentElement$1.getRootNode ) {
 }
 
 // rtagName captures the name from the first start tag in a string of HTML
-// https://html.spec.whatwg.org/multipage/syntax.html#tag-open-state
-// https://html.spec.whatwg.org/multipage/syntax.html#tag-name-state
+// https://html.spec.whatwg.org/multipage/syntax.jsp#tag-open-state
+// https://html.spec.whatwg.org/multipage/syntax.jsp#tag-name-state
 var rtagName = /<([a-z][^\/\0>\x20\t\r\n\f]*)/i;
 
 var wrapMap = {
@@ -4422,7 +4422,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 					tmp = tmp.appendChild( context.createElement( wrap[ j ] ) );
 				}
 
-				tmp.innerHTML = jQuery.htmlPrefilter( elem );
+				tmp.innerHTML = jQuery.jspPrefilter( elem );
 
 				jQuery.merge( nodes, tmp.childNodes );
 
@@ -4503,7 +4503,7 @@ function domManip( collection, args, callback, ignored ) {
 	if ( valueIsFunction ) {
 		return collection.each( function( index ) {
 			var self = collection.eq( index );
-			args[ 0 ] = value.call( this, index, self.html() );
+			args[ 0 ] = value.call( this, index, self.jsp() );
 			domManip( self, args, callback, ignored );
 		} );
 	}
@@ -5219,7 +5219,7 @@ jQuery.Event = function( src, props ) {
 };
 
 // jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
-// https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
+// https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.jsp
 jQuery.Event.prototype = {
 	constructor: jQuery.Event,
 	isDefaultPrevented: returnFalse,
@@ -5688,7 +5688,7 @@ jQuery.fn.extend( {
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
-				value = jQuery.htmlPrefilter( value );
+				value = jQuery.jspPrefilter( value );
 
 				try {
 					for ( ; i < l; i++ ) {
@@ -9264,7 +9264,7 @@ jQuery.fn.load = function( url, params, callback ) {
 			// Save response for use in complete callback
 			response = arguments;
 
-			self.html( selector ?
+			self.jsp( selector ?
 
 				// If a selector was specified, locate the right elements in a dummy div
 				// Exclude scripts to avoid IE 'Permission Denied' errors

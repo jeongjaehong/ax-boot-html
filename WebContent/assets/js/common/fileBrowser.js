@@ -273,7 +273,7 @@ fnObj.formView01 = axboot.viewExtend(axboot.formView, {
         if (data.fileType == "IMAGE") {
             po.push('<div><img src="' + data.preview + '" class="img-responsive"/></div>');
         }
-        this.previewTarget.html(po.join(''));
+        this.previewTarget.jsp(po.join(''));
     },
     clear: function () {
         this.model.setModel(this.getDefaultData());

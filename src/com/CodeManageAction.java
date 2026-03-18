@@ -33,11 +33,11 @@ public class CodeManageAction extends Action {
 	 */
 	public void processSearchCodeManageHead() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 		try {
 			
-			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("dpms"));		
+			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("default"));		
 			if(!"읽기".equals(auhority) && !"저장".equals(auhority)) {
 				PortalUtil.setResult(this.getResponse(), -1, "권한이 없습니다.\n" + auhority);
 				return;
@@ -47,7 +47,7 @@ public class CodeManageAction extends Action {
 
 			getLogger().debug(box);
 
-			RecordSet rs = getSelect("dpms").searchCodeManageHead(box);
+			RecordSet rs = getSelect("default").searchCodeManageHead(box);
 
 			PortalUtil.setResult(this.getResponse(), rs, true);
 
@@ -65,11 +65,11 @@ public class CodeManageAction extends Action {
 	 */
 	public void processSaveCodeManageHead() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 		HashMap<String, Object> map = null;
 		try {
 
-			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("dpms"));		
+			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("default"));		
 			if( !"저장".equals(auhority)) {
 				PortalUtil.setResult(this.getResponse(), -1, "저장 권한이 없습니다.");
 				return;
@@ -87,7 +87,7 @@ public class CodeManageAction extends Action {
 			Box box = this.getInput();
 
 			ArrayList<HashMap<String, Object>> jarray = (ArrayList<HashMap<String, Object>>) JsonUtil.parse(box.getRawString("rows"));
-			map = getSelect("dpms").saveCodeManageHead(jarray, loginBean);
+			map = getSelect("default").saveCodeManageHead(jarray, loginBean);
 
 			getLogger().debug("sp result=" + map);
 
@@ -108,11 +108,11 @@ public class CodeManageAction extends Action {
 	 */
 	public void processSearchCodeManageDetail() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 		try {
 			
-			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("dpms"));		
+			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("default"));		
 			if(!"읽기".equals(auhority) && !"저장".equals(auhority)) {
 				PortalUtil.setResult(this.getResponse(), -1, "권한이 없습니다.\n" + auhority);
 				return;
@@ -122,7 +122,7 @@ public class CodeManageAction extends Action {
 
 			getLogger().debug(box);
 
-			RecordSet rs = getSelect("dpms").searchCodeManageDetail(box);
+			RecordSet rs = getSelect("default").searchCodeManageDetail(box);
 
 			PortalUtil.setResult(this.getResponse(), rs, true);
 
@@ -141,11 +141,11 @@ public class CodeManageAction extends Action {
 
 	public void processSaveCodeManage() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 		HashMap<String, Object> map = null;
 		try {
 
-			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("dpms"));		
+			String auhority = GrantUtil.getAuthority(getRequest(), getConnectionManager("default"));		
 			if( !"저장".equals(auhority)) {
 				PortalUtil.setResult(this.getResponse(), -1, "저장 권한이 없습니다.");
 				return;
@@ -163,7 +163,7 @@ public class CodeManageAction extends Action {
 			Box box = this.getInput();
 
 			ArrayList<HashMap<String, Object>> jarray = (ArrayList<HashMap<String, Object>>) JsonUtil.parse(box.getRawString("rows"));
-			map = getSelect("dpms").saveCodeManage(jarray, loginBean);
+			map = getSelect("default").saveCodeManage(jarray, loginBean);
 
 			getLogger().debug("sp result=" + map);
 			PortalUtil.setResult(this.getResponse(), 0, "저장 되었습니다.");
@@ -183,7 +183,7 @@ public class CodeManageAction extends Action {
 	 */
 	public void processDeleteCodeManage() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 		HashMap<String, Object> map = null;
 		try {
 
@@ -198,7 +198,7 @@ public class CodeManageAction extends Action {
 			Box box = this.getInput();
 
 			ArrayList<HashMap<String, Object>> jarray = (ArrayList<HashMap<String, Object>>) JsonUtil.parse(box.getRawString("rows"));
-			map = getSelect("dpms").deleteCodeManage(jarray, loginBean);
+			map = getSelect("default").deleteCodeManage(jarray, loginBean);
 
 			getLogger().debug("sp result=" + map);
 

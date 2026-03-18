@@ -317,7 +317,7 @@
                         n["@index"] = nindex;
                     });
 
-                    item.$select.html(AUTOCOMPLETE.tmpl.get.call(this, "formSelectOptions", {
+                    item.$select.jsp(AUTOCOMPLETE.tmpl.get.call(this, "formSelectOptions", {
                         selected: item.selected
                     }, item.columnKeys));
                 },
@@ -383,7 +383,7 @@
                         data.multiple = item.multiple;
                         data.lang = item.lang;
                         data.options = item.options;
-                        this.activeautocompleteOptionGroup.find('[data-els="content"]').html(jQuery(AUTOCOMPLETE.tmpl.get.call(this, "options", data, item.columnKeys)));
+                        this.activeautocompleteOptionGroup.find('[data-els="content"]').jsp(jQuery(AUTOCOMPLETE.tmpl.get.call(this, "options", data, item.columnKeys)));
 
                         focusWord.call(this, this.activeautocompleteQueueIndex, searchWord);
                         alignAutocompleteOptionGroup.call(this);
@@ -549,7 +549,7 @@
                     });
 
                     this.queue[queIdx].selected = [];
-                    this.queue[queIdx].$select.html(AUTOCOMPLETE.tmpl.get.call(this, "formSelectOptions", {
+                    this.queue[queIdx].$select.jsp(AUTOCOMPLETE.tmpl.get.call(this, "formSelectOptions", {
                         selected: this.queue[queIdx].selected
                     }, this.queue[queIdx].columnKeys));
                 },
@@ -1137,7 +1137,7 @@
                     data.options = [];
 
                     this.activeautocompleteOptionGroup = jQuery(AUTOCOMPLETE.tmpl.get.call(this, "optionGroup", data, item.columnKeys));
-                    this.activeautocompleteOptionGroup.find('[data-els="content"]').html(jQuery(AUTOCOMPLETE.tmpl.get.call(this, "options", data, item.columnKeys)));
+                    this.activeautocompleteOptionGroup.find('[data-els="content"]').jsp(jQuery(AUTOCOMPLETE.tmpl.get.call(this, "options", data, item.columnKeys)));
                     this.activeautocompleteQueueIndex = queIdx;
 
                     alignAutocompleteOptionGroup.call(this, "append"); // alignAutocompleteOptionGroup 에서 body append

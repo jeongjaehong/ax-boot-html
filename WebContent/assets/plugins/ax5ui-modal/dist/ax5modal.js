@@ -49,7 +49,7 @@
          *     },
          *     iframe: {
          *         method: "get",
-         *         url: "http://chequer-app:2017/html/login.html",
+         *         url: "http://chequer-app:2017/html/login.jsp",
          *         param: "callback=modalCallback"
          *     }
          * });

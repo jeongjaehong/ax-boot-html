@@ -69,6 +69,10 @@
         <filter-name>AccessLogFilter</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>AccessLogFilter</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>ActionServlet</servlet-name>
         <servlet-class>framework.action.ActionServlet</servlet-class>
@@ -86,6 +90,12 @@
         <servlet-name>ActionServlet</servlet-name>
         <url-pattern>*.do</url-pattern>
     </servlet-mapping>
+    <jsp-config>
+        <jsp-property-group>
+            <url-pattern>*.jsp</url-pattern>
+            <page-encoding>UTF-8</page-encoding>
+        </jsp-property-group>
+    </jsp-config>
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>

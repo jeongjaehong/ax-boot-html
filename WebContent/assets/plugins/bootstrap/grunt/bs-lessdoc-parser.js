@@ -63,11 +63,11 @@ SubSection.prototype.addVar = function (variable) {
 };
 
 function VarDocstring(markdownString) {
-  this.html = markdown2html(markdownString);
+  this.jsp = markdown2html(markdownString);
 }
 
 function SectionDocstring(markdownString) {
-  this.html = markdown2html(markdownString);
+  this.jsp = markdown2html(markdownString);
 }
 
 function Variable(name, defaultValue) {

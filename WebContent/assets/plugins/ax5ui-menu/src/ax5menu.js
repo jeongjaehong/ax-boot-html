@@ -217,10 +217,10 @@
                     };
 
                     items.forEach(function (n) {
-                        if (n.html || n.divide) {
+                        if (n.jsp || n.divide) {
                             n['@isMenu'] = false;
-                            if (n.html) {
-                                n['@html'] = n.html.call({
+                            if (n.jsp) {
+                                n['@html'] = n.jsp.call({
                                     item: n,
                                     config: cfg,
                                     opt: opt
@@ -694,10 +694,10 @@
                     };
 
                     items.forEach(function (n) {
-                        if (n.html || n.divide) {
+                        if (n.jsp || n.divide) {
                             n['@isMenu'] = false;
-                            if (n.html) {
-                                n['@html'] = n.html.call({
+                            if (n.jsp) {
+                                n['@html'] = n.jsp.call({
                                     item: n,
                                     config: cfg,
                                     opt: opt
@@ -716,7 +716,7 @@
                         target: jQuery(el),
                         opened: false
                     };
-                    self.menuBar.target.html(activeMenu);
+                    self.menuBar.target.jsp(activeMenu);
 
                     // click, mouseover
                     self.menuBar.target.bind("click", function (e) {

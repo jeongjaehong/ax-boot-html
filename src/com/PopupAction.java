@@ -34,14 +34,14 @@ public class PopupAction extends Action {
 
 	public void processSearch() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 		try {
 			Box box = this.getInput();
 
 			getLogger().debug(box);
 
-			RecordSet rs = getSelect("dpms").searchData(box);
+			RecordSet rs = getSelect("default").searchData(box);
 
 			PortalUtil.setResult(this.getResponse(), rs, true);
 
@@ -59,14 +59,14 @@ public class PopupAction extends Action {
 	 */
 	public void processPopupQuerySearch() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 		try {
 			Box box = this.getInput();
 
 			getLogger().debug(box);
 
-			RecordSet rs = getSelect("dpms").searchPopupQuery(box);
+			RecordSet rs = getSelect("default").searchPopupQuery(box);
 
 			PortalUtil.setResult(this.getResponse(), rs, true);
 
@@ -84,7 +84,7 @@ public class PopupAction extends Action {
 	 */
 	public void processSavePopupQuery() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 		HashMap<String, Object> map = null;
 		try {
 
@@ -99,12 +99,12 @@ public class PopupAction extends Action {
 			Box box = this.getInput();
 
 			ArrayList<HashMap<String, Object>> jarray = (ArrayList<HashMap<String, Object>>) JsonUtil.parse(box.getRawString("rows"));
-			map = getSelect("dpms").savePopupQuery(jarray, loginBean);
+			map = getSelect("default").savePopupQuery(jarray, loginBean);
 
 			getLogger().debug("sp result=" + map);
 
 			if (0 == (Integer) map.get("result")) {
-				RecordSet rs = getSelect("dpms").searchPopupQuery(box);
+				RecordSet rs = getSelect("default").searchPopupQuery(box);
 
 				if (rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);

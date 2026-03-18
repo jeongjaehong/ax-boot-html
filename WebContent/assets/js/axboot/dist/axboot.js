@@ -258,7 +258,6 @@ window.onUnload = function () {
  * ```
  */
 axboot.ajax = function () {
-
     var queue = [];
     var defaultOption = {
         apiType: "",
@@ -1065,7 +1064,7 @@ axboot.ajax = function () {
         var $tip = this.tip();
         var title = this.getTitle();
 
-        $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title);
+        $tip.find('.tooltip-inner')[this.options.jsp ? 'html' : 'text'](title);
         $tip.removeClass('fade in top bottom left right');
     };
 
@@ -2347,7 +2346,7 @@ axboot.addressPopup = {
             width: 500,
             height: 600,
             iframe: {
-                url: "/html/common/zipcode.html"
+                url: "/html/common/zipcode.jsp"
             },
             header: {
                 title: "우편번호 찾기"

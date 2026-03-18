@@ -1,3 +1,4 @@
+<%@ include file="/common/_page.jsp" %>
 <%@ page import="com.chequer.axboot.core.utils.RequestUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

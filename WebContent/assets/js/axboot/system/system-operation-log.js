@@ -262,10 +262,10 @@ fnObj.formView01 = axboot.viewExtend(axboot.formView, {
                 }
             } else {
                 po.push('<pre class="prettyprint linenums" style="margin:0;">');
-                po.push($this.html());
+                po.push($this.jsp());
             }
             po.push('</pre>');
-            $this.html(po.join(''));
+            $this.jsp(po.join(''));
         });
         if (window["prettyPrint"]) window["prettyPrint"]();
     }

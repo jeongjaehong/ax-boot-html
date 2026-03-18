@@ -1,7 +1,6 @@
 package util;
 
 import com.LoginBean;
-import crosscert.Base64;
 import framework.action.Box;
 import framework.config.Configuration;
 import framework.db.RecordSet;
@@ -24,6 +23,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -169,10 +169,13 @@ public class PortalUtil {
     }
 
     public static String getGwHost(String ServerIP) {
+        try {
+            Configuration config = framework.config.Configuration.getInstance();
 
-        Configuration config = framework.config.Configuration.getInstance();
-
-        return config.getString("gw." + ServerIP.replaceAll(":", ".") + ".host");
+            return config.getString("gw." + ServerIP.replaceAll(":", ".") + ".host");
+        } catch (Exception e) {
+            return "";
+        }
 
     }
 
@@ -180,9 +183,10 @@ public class PortalUtil {
 
         Configuration config = framework.config.Configuration.getInstance();
 
-        return config.getString("appinfo."+key);
+        return config.getString("appinfo." + key);
 
     }
+
     public static String getNTSPdfFlolder(String ServerIP) {
 
         Configuration config = framework.config.Configuration.getInstance();
@@ -466,9 +470,7 @@ public class PortalUtil {
             // BASE64Encoder encoder = new BASE64Encoder();
             // return encoder.encode(digesta);
 
-            Base64 encoder = new Base64();
-            encoder.Encode(digesta, digesta.length);
-            return new String(encoder.contentbuf);
+            return Base64.getEncoder().encodeToString(digesta);
         } catch (Exception e) {
             return "";
         }
@@ -682,7 +684,7 @@ public class PortalUtil {
 
     public static void setMessage(HttpServletResponse response, int error, SQLException e) {
         String src = e.getMessage();
-        setMessage( response,  error,  e,  src);
+        setMessage(response, error, e, src);
     }
 
     public static void setMessage(HttpServletResponse response, int error, SQLException e, String src) {
@@ -992,4 +994,12 @@ public class PortalUtil {
     }
 
 
+    public static String getCompanyName(String key) {
+        try {
+            Configuration config = framework.config.Configuration.getInstance();
+            return config.getString("appinfo." + key);
+        } catch (Exception e) {
+            return "";
+        }
+    }
 }

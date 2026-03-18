@@ -304,7 +304,7 @@
                 onSearch = function onSearch(queIdx, searchWord) {
                 this.queue[queIdx].waitOptions = true;
 
-                this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(COMBOBOX.tmpl.get.call(this, "option", this.queue[queIdx], this.queue[queIdx].columnKeys)));
+                this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(COMBOBOX.tmpl.get.call(this, "option", this.queue[queIdx], this.queue[queIdx].columnKeys)));
 
                 this.queue[queIdx].onSearch.call({
                     self: this,
@@ -344,7 +344,7 @@
                     data.lang = item.lang;
                     data.options = item.options;
 
-                    this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
+                    this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
                 }.bind(this));
             },
                 focusWord = function focusWord(queIdx, searchWord) {
@@ -554,7 +554,7 @@
                             }
                         });
                         item.optionItemLength = focusIndex;
-                        item.$select.html(po.join(''));
+                        item.$select.jsp(po.join(''));
                     } else {
                         /// select > options 태그로 스크립트 options를 만들어주는 역할
                         if (item.$select.get(0).options && item.$select.get(0).options.length) item.$select.get(0).options[0].selected = false;
@@ -1000,7 +1000,7 @@
                             // select.options로 item.options를 만들어내거나 item.options로 select.options를 만들어냄
                             item.options = syncComboboxOptions.call(this, queIdx, item.options);
                         } else {
-                            item.$displayLabel.html(getLabel.call(this, queIdx));
+                            item.$displayLabel.jsp(getLabel.call(this, queIdx));
                             item.options = syncComboboxOptions.call(this, queIdx, item.options);
                         }
 
@@ -1114,11 +1114,11 @@
                             data.lang = item.lang;
                             data.options = item.options;
                             /*
-                             this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(
+                             this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(
                              ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)
                              ));
                              */
-                            this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
+                            this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
                         }
                     }.bind(this));
                 };
@@ -1175,8 +1175,8 @@
 
                     //this.activecomboboxOptionGroup = jQuery(ax5.mustache.render(COMBOBOX.tmpl["optionGroup"].call(this, item.columnKeys), data));
                     this.activecomboboxOptionGroup = jQuery(COMBOBOX.tmpl.get.call(this, "optionGroup", data, item.columnKeys));
-                    //this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)));
-                    this.activecomboboxOptionGroup.find('[data-els="content"]').html(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
+                    //this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(ax5.mustache.render(COMBOBOX.tmpl["options"].call(this, item.columnKeys), data)));
+                    this.activecomboboxOptionGroup.find('[data-els="content"]').jsp(jQuery(COMBOBOX.tmpl.get.call(this, "options", data, item.columnKeys)));
                     this.activecomboboxQueueIndex = queIdx;
 
                     alignComboboxOptionGroup.call(this, "append"); // alignComboboxOptionGroup 에서 body append

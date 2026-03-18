@@ -305,7 +305,7 @@
                 }();
             },
                 syncLabel = function syncLabel(queIdx) {
-                this.queue[queIdx].$displayLabel.html(getLabel.call(this, queIdx));
+                this.queue[queIdx].$displayLabel.jsp(getLabel.call(this, queIdx));
             },
                 focusWord = function focusWord(queIdx, searchWord) {
                 var options = [],
@@ -479,7 +479,7 @@
 
                         item.$displayInput.unbind("blur.ax5select").bind("blur.ax5select", selectEvent.blur.bind(this, queIdx)).unbind('keyup.ax5select').bind('keyup.ax5select', selectEvent.keyUp.bind(this, queIdx)).unbind("keydown.ax5select").bind("keydown.ax5select", selectEvent.keyDown.bind(this, queIdx));
                     } else {
-                        item.$displayLabel.html(getLabel.call(this, queIdx));
+                        item.$displayLabel.jsp(getLabel.call(this, queIdx));
                         item.options = syncSelectOptions.call(this, queIdx, item.options);
 
                         alignSelectDisplay.call(this);
@@ -552,7 +552,7 @@
                         });
 
                         item.optionItemLength = focusIndex;
-                        item.$select.html(po.join(''));
+                        item.$select.jsp(po.join(''));
                     } else {
                         /// select > options 태그로 스크립트 options를 만들어주는 역할
                         elementOptions = U.toArray(item.$select.get(0).options);
@@ -718,7 +718,7 @@
                                 }
                             })(item, O);
 
-                            item.$displayLabel.html(getLabel.call(this, this.activeSelectQueueIndex));
+                            item.$displayLabel.jsp(getLabel.call(this, this.activeSelectQueueIndex));
                             item.options = syncSelectOptions.call(this, this.activeSelectQueueIndex, O.options);
 
                             alignSelectDisplay.call(this);
@@ -730,7 +730,7 @@
                             data.multiple = item.multiple;
                             data.lang = item.lang;
                             data.options = item.options;
-                            this.activeSelectOptionGroup.find('[data-els="content"]').html(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
+                            this.activeSelectOptionGroup.find('[data-els="content"]').jsp(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
                         }
                     }.bind(this));
                 };
@@ -786,7 +786,7 @@
 
                     data.options = item.options;
                     this.activeSelectOptionGroup = SELECT.tmpl.get.call(this, "optionGroupTmpl", data);
-                    this.activeSelectOptionGroup.find('[data-els="content"]').html(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
+                    this.activeSelectOptionGroup.find('[data-els="content"]').jsp(SELECT.tmpl.get.call(this, "optionsTmpl", data, item.columnKeys));
                     this.activeSelectQueueIndex = queIdx;
 
                     alignSelectOptionGroup.call(this, "append"); // alignSelectOptionGroup 에서 body append

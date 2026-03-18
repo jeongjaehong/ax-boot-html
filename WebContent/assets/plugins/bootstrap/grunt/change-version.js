@@ -92,7 +92,7 @@ function main(args) {
     // This extension whitelist is how we avoid modifying binary files
     '',
     '.css',
-    '.html',
+    '.jsp',
     '.js',
     '.json',
     '.less',

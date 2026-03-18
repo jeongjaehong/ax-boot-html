@@ -1516,7 +1516,7 @@
 			nObj = $$(node, consts.id.SPAN, setting);
 			nObj.empty();
 			if (setting.view.nameIsHTML) {
-				nObj.html(data.getNodeName(setting, node));
+				nObj.jsp(data.getNodeName(setting, node));
 			} else {
 				nObj.text(data.getNodeName(setting, node));
 			}

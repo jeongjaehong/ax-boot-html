@@ -146,7 +146,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                     instanceId: this.id
                 };
 
-                this.$target.html(GRID.tmpl.get("main", data));
+                this.$target.jsp(GRID.tmpl.get("main", data));
 
                 // 그리드 패널 프레임의 각 엘리먼트를 캐쉬합시다.
                 this.$ = {
@@ -2315,7 +2315,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         var updateCell = this.$["panel"][_panelName].find('[data-ax5grid-tr-data-index="' + _dindex + '"]').find('[data-ax5grid-column-rowindex="' + _rowIndex + '"][data-ax5grid-column-colindex="' + _colIndex + '"]').find('[data-ax5grid-cellholder]');
         var colGroup = this.colGroup;
         var col = colGroup[_colIndex];
-        updateCell.html(getFieldValue.call(this, list, list[_dindex], _dindex, col));
+        updateCell.jsp(getFieldValue.call(this, list, list[_dindex], _dindex, col));
 
         if (col.editor && col.editor.updateWith) {
             col.editor.updateWith.forEach(function (updateColumnKey) {
@@ -2325,7 +2325,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                         var colIndex = col.colIndex;
                         var panelName = GRID.util.findPanelByColumnIndex.call(self, _dindex, colIndex, rowIndex).panelName;
                         var updateWithCell = self.$["panel"][panelName].find('[data-ax5grid-tr-data-index="' + _dindex + '"]').find('[data-ax5grid-column-rowindex="' + rowIndex + '"][data-ax5grid-column-colindex="' + colIndex + '"]').find('[data-ax5grid-cellholder]');
-                        updateWithCell.html(getFieldValue.call(self, list, list[_dindex], _dindex, col));
+                        updateWithCell.jsp(getFieldValue.call(self, list, list[_dindex], _dindex, col));
                     }
                 });
             });
@@ -2742,7 +2742,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 SS.push('<td ', 'data-ax5grid-column-row="null" ', 'data-ax5grid-column-col="null" ', 'data-ax5grid-data-index="' + di + '" ', 'data-ax5grid-column-attr="' + "default" + '" ', 'style="height: ' + cfg.body.columnHeight + 'px;min-height: 1px;" ', '></td>');
             }
 
-            //_elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').html(SS.join(''));
+            //_elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').jsp(SS.join(''));
             _elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').empty().get(0).innerHTML = SS.join('');
         };
 
@@ -4289,7 +4289,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 SS.push('</tr>');
             }
             SS.push('</table>');
-            _elTarget.html(SS.join(''));
+            _elTarget.jsp(SS.join(''));
 
             /// append column-resizer
             (function () {
@@ -4697,7 +4697,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
                 page.hasPage = true;
             }
 
-            this.$["page"]["navigation"].html(GRID.tmpl.get("page_navigation", page));
+            this.$["page"]["navigation"].jsp(GRID.tmpl.get("page_navigation", page));
             this.$["page"]["navigation"].find("[data-ax5grid-page-move]").on("click", function () {
                 var act = this.getAttribute("data-ax5grid-page-move");
                 onclickPageMove.call(self, act);
@@ -4716,7 +4716,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             toRowIndex = totalElements;
         }
 
-        this.$["page"]["status"].html(GRID.tmpl.get("page_status", {
+        this.$["page"]["status"].jsp(GRID.tmpl.get("page_status", {
             fromRowIndex: U.number(fromRowIndex + 1, { "money": true }),
             toRowIndex: U.number(toRowIndex, { "money": true }),
             totalElements: U.number(totalElements, { "money": true }),

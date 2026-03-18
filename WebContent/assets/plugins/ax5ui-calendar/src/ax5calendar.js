@@ -155,7 +155,7 @@
                             yy = (cfg.control.yearTmpl) ? cfg.control.yearTmpl.replace('%s', myDate.getFullYear()) : myDate.getFullYear();
                             mm = (cfg.control.monthTmpl) ? cfg.control.monthTmpl.replace('%s', cfg.lang.months[myDate.getMonth()]) : cfg.lang.months[myDate.getMonth()];
 
-                            this.$["control-display"].html((function () {
+                            this.$["control-display"].jsp((function () {
                                 if (cfg.control.yearFirst) {
                                     return '<span data-calendar-display="year">' + yy + '</span>' +
                                         '<span data-calendar-display="month">' + mm + '</span>';
@@ -169,12 +169,12 @@
                         }
                         else if (cfg.mode == "month" || cfg.mode == "m") {
                             yy = (cfg.control.yearTmpl) ? cfg.control.yearTmpl.replace('%s', myDate.getFullYear()) : myDate.getFullYear();
-                            this.$["control-display"].html('<span data-calendar-display="year">' + yy + '</span>');
+                            this.$["control-display"].jsp('<span data-calendar-display="year">' + yy + '</span>');
                         }
                         else if (cfg.mode == "year" || cfg.mode == "y") {
                             yy1 = (cfg.control.yearTmpl) ? cfg.control.yearTmpl.replace('%s', myDate.getFullYear() - 10) : myDate.getFullYear() - 10;
                             yy2 = (cfg.control.yearTmpl) ? cfg.control.yearTmpl.replace('%s', Number(myDate.getFullYear()) + 9) : Number(myDate.getFullYear()) + 9;
-                            this.$["control-display"].html(yy1 + ' ~ ' + yy2);
+                            this.$["control-display"].jsp(yy1 + ' ~ ' + yy2);
                         }
 
                         this.$["control-display"].find('[data-calendar-display]').on(cfg.clickEventName, (function (e) {
@@ -313,7 +313,7 @@
                         i++;
                     }
                     tmpl = CALENDAR.tmpl.get.call(this, "dayTmpl", data);
-                    this.$["body"].html(tmpl);
+                    this.$["body"].jsp(tmpl);
                     this.$["body"].find('[data-calendar-item-date]').on(cfg.clickEventName, function (e) {
                         e = e || window.event;
                         onclick.call(self, e, 'date');
@@ -412,7 +412,7 @@
                         i++;
                     }
                     tmpl = CALENDAR.tmpl.get.call(this, "monthTmpl", data);
-                    this.$["body"].html(tmpl);
+                    this.$["body"].jsp(tmpl);
                     this.$["body"].find('[data-calendar-item-month]').on(cfg.clickEventName, function (e) {
                         e = e || window.event;
                         onclick.call(self, e, 'month');
@@ -510,7 +510,7 @@
                         i++;
                     }
                     tmpl = CALENDAR.tmpl.get.call(this, "yearTmpl", data);
-                    this.$["body"].html(tmpl);
+                    this.$["body"].jsp(tmpl);
                     this.$["body"].find('[data-calendar-item-year]').on(cfg.clickEventName, function (e) {
                         e = (e || window.event);
                         onclick.call(this, e, 'year');
@@ -701,7 +701,7 @@
                         if (cfg.mode === "day" || cfg.mode === "d") {
                             for (var k in this.periodMap) {
                                 if (this.periodMap[k].label) {
-                                    this.$["body"].find('[data-calendar-item-date="' + k + '"]').find(".addon-footer").html(this.periodMap[k].label);
+                                    this.$["body"].find('[data-calendar-item-date="' + k + '"]').find(".addon-footer").jsp(this.periodMap[k].label);
                                 }
                                 this.$["body"].find('[data-calendar-item-date="' + k + '"]').addClass(this.periodMap[k].theme);
                             }
@@ -747,7 +747,7 @@
                 this.target = jQuery(cfg.target);
 
                 cfg.displayDate = U.date(cfg.displayDate);
-                this.target.html(getFrame.call(this));
+                this.target.jsp(getFrame.call(this));
 
                 // 파트수집
                 this.$ = {

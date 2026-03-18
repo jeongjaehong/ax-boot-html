@@ -1517,7 +1517,7 @@
 			nObj = $$(node, consts.id.SPAN, setting);
 			nObj.empty();
 			if (setting.view.nameIsHTML) {
-				nObj.html(data.getNodeName(setting, node));
+				nObj.jsp(data.getNodeName(setting, node));
 			} else {
 				nObj.text(data.getNodeName(setting, node));
 			}
@@ -3316,7 +3316,7 @@
 			view.removeTreeDom(setting, node);
 			view.cancelCurEditNode(setting);
 			view.selectNode(setting, node, false);
-			$$(node, consts.id.SPAN, setting).html("<input type=text class='rename' id='" + node.tId + consts.id.INPUT + "' treeNode" + consts.id.INPUT + " >");
+			$$(node, consts.id.SPAN, setting).jsp("<input type=text class='rename' id='" + node.tId + consts.id.INPUT + "' treeNode" + consts.id.INPUT + " >");
 			var inputObj = $$(node, consts.id.INPUT, setting);
 			inputObj.attr("value", node[nameKey]);
 			if (setting.edit.editNameSelectAll) {

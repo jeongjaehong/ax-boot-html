@@ -82,7 +82,7 @@
    * [修改]  使用 cancelEditName 方法时，beforeRename & onRename 的 isCancel 始终为 false 的bug
    * [修改]  编辑状态， beforeRename 回调 return false 时，提示信息导致 input 失去焦点后， 当树再次得到焦点时，让 input 自动获取焦点
    * [修改]  判断拖拽到节点的 <a> 标签中自定义的无 id 组件判断错误的bug
-   * [修改]  async_edit.html demo 中 添加按钮 显示的 bug
+   * [修改]  async_edit.jsp demo 中 添加按钮 显示的 bug
    * [修改]  当没有开启异步加载模式下，对于没有子节点的父节点，即使设置 open=true 在初始化时也不会设置为展开状态的bug （对于异步加载模式下依然会强行设置为折叠状态）
 
 *2013.06.28* v3.5.14
@@ -120,8 +120,8 @@
    * [修改] setChkDisabled 方法，增加 inheritParent, inheritChildren 参数设置是否让父子节点继承 disabled
    * [修改] 异步加载时 拼接参数的方法，由 string 修改为 json 对象
    * [修正] 1-2-3 3级节点时，如果 2级节点 全部设置为 nocheck 或 chkDisabled后，勾选3级节点时，1级节点的半勾选状态错误的 bug
-   * [修改] Demo: checkbox_nocheck.html & checkbox_chkDisabled.html;
-   * [修改] Demo: edit_super.html，增加 showRenameBtn & showRemoveBtn 的演示
+   * [修改] Demo: checkbox_nocheck.jsp & checkbox_chkDisabled.jsp;
+   * [修改] Demo: edit_super.jsp，增加 showRenameBtn & showRemoveBtn 的演示
    * [修改] Demo: asyncForAll, 将 post 修改为 get；为了避免由于 IE10 的 bug 造成的客户端 以及 服务端崩溃
       IE10 ajax Post 无法提交参数的bug (http://bugs.jquery.com/ticket/12790)
 
@@ -131,7 +131,7 @@
    * [修正] beforeRename 回调中使用 cancelEditName 方法后，再 return false 导致无法重新进行编辑的 bug
    * [修正] exedit 扩展包让 setting.data.key.url 失效的 bug
    * [修正] setting.check.autoCheckTrigger 设置为 true 时，onCheck 回调缺少 event 参数的 bug
-   * [修正] singlepath.html Demo 中的 bug
+   * [修正] singlepath.jsp Demo 中的 bug
 
 *2012.11.20* v3.5
    * [优化] 原先的 clone 方法 （特别感谢：愚人码头）
@@ -146,7 +146,7 @@
    * [修改] API 中 dataFilter 的参数名称 childNodes ->  responseData
    * [修改] API 中 iconSkin 的 举例内容
    * [修改] API 中 chkDisabled 的说明
-   * [修改] Demo 中 index.html 内的 loadReady 重复绑定问题
+   * [修改] Demo 中 index.jsp 内的 loadReady 重复绑定问题
 
 *2012.09.03* v3.4
    * [增加]  Demo —— OutLook 样式的左侧菜单

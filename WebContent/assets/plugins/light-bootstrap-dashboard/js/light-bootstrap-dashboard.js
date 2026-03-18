@@ -73,12 +73,12 @@ lbd = {
             $navbar.attr('data-color',sidebar_color);
              
             // add the content from the sidebar to the right menu
-            content_buff = $sidebar.find('.nav').html();
+            content_buff = $sidebar.find('.nav').jsp();
             ul_content = ul_content + content_buff;
             
             //add the content from the regular header to the right menu
             $navbar.children('ul').each(function(){
-                content_buff = $(this).html();
+                content_buff = $(this).jsp();
                 ul_content = ul_content + content_buff;   
             });
              
@@ -86,7 +86,7 @@ lbd = {
             
             navbar_content = logo_content + ul_content;
             
-            $navbar.html(navbar_content);
+            $navbar.jsp(navbar_content);
              
             $('body').append($navbar);
              

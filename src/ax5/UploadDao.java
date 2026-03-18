@@ -62,7 +62,7 @@ public class UploadDao extends SelectDaoSupport {
 
         try {
 
-            if ("dpms".equals(fileMap.get("target_db"))) {
+            if ("default".equals(fileMap.get("target_db"))) {
                 RecordSet rs = select(" select SEQ_ATTACH.NEXTVAL as attach_seq from dual ");
                 if (rs.nextRow()) {
                     attach_seq = rs.getLong("attach_seq");

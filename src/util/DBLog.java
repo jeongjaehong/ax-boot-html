@@ -83,8 +83,8 @@ public class DBLog {
 
 			pstmt.set(cond.getParameter());
 
-			pstmt.executeUpdate();
-			connMgr.commit();
+			//pstmt.executeUpdate();
+			//connMgr.commit();
 			pstmt.close();
 
 		} catch (Exception e) {

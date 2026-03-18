@@ -244,7 +244,7 @@ public class UploadAction extends Action {
             // multipart 데이터 파싱
             List<FileItem> formItems = upload.parseRequest(this.getRequest());
 
-            String target_db = "dpms";
+            String target_db = "default";
             String target_table = null;
             String attach_group = null;
             String target_column = null;
@@ -335,7 +335,7 @@ public class UploadAction extends Action {
         } catch (Exception e) {
             getLogger().error(e);
             PortalUtil.sendError(this.getResponse(), e.getMessage() + "\n" + e.toString());
-            DBLog.errorLog(getRequest(), getConnectionManager("dpms"), e, this);
+            DBLog.errorLog(getRequest(), getConnectionManager("default"), e, this);
             e.printStackTrace();
         }
     }
@@ -410,7 +410,7 @@ public class UploadAction extends Action {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
         String host = "http://" + getRequest().getHeader("host");
-        String target_db = "dpms";
+        String target_db = "default";
         if (fileMap.containsKey("target_db") && StringUtil.isNotEmpty(fileMap.get("target_db").toString())) {
             target_db = fileMap.get("target_db") + "";
         }
@@ -427,9 +427,9 @@ public class UploadAction extends Action {
     }
 
     public void processChangePrimary() {
-        String target_db = "dpms";
+        String target_db = "default";
         try {
-            DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+            DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
             LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
             String voc_request_phone = (String) getSessionAttribute("voc_request_phone");
@@ -475,12 +475,12 @@ public class UploadAction extends Action {
      */
     public void processLoadAttachFiles() {
         try {
-            DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+            DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
             LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
             String voc_request_phone = (String) getSessionAttribute("voc_request_phone");
 
-            String target_db = "dpms";
+            String target_db = "default";
             if (getInput().containsKey("target_db")) {
                 target_db = getInput().get("target_db") + "";
             }
@@ -513,7 +513,7 @@ public class UploadAction extends Action {
 
     public void processLoadAllAttachFiles() {
         try {
-            DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+            DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
             LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
             String voc_request_phone = (String) getSessionAttribute("voc_request_phone");
@@ -524,7 +524,7 @@ public class UploadAction extends Action {
                 PortalUtil.setResult(this.getResponse(), -99, "로그인 정보를 찾을 수 없습니다.");
             } else {
 
-                String target_db = "dpms";
+                String target_db = "default";
                 if (box.containsKey("target_db")) {
                     target_db = box.get("target_db") + "";
                 }

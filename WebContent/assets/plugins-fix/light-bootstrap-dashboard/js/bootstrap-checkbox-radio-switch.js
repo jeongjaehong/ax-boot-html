@@ -302,7 +302,7 @@
               .addClass("switch-left")
               .addClass(myClasses)
               .addClass(color)
-              .html(onLabel);
+              .jsp(onLabel);
 
             color = '';
             if ($element.data('off') !== undefined)
@@ -312,15 +312,15 @@
               .addClass("switch-right")
               .addClass(myClasses)
               .addClass(color)
-              .html(offLabel);
+              .jsp(offLabel);
 
             $label = $('<label>')
-              .html("&nbsp;")
+              .jsp("&nbsp;")
               .addClass(myClasses)
               .attr('for', $element.find('input').attr('id'));
 
             if (icon) {
-              $label.html('<i class="' + icon + '"></i>');
+              $label.jsp('<i class="' + icon + '"></i>');
             }
 
             $div = $element.find(':checkbox').wrap($('<div>')).parent().data('animated', false);

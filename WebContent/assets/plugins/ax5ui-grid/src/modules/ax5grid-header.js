@@ -272,7 +272,7 @@
                 SS.push('</tr>');
             }
             SS.push('</table>');
-            _elTarget.html(SS.join(''));
+            _elTarget.jsp(SS.join(''));
 
             /// append column-resizer
             (function () {

@@ -558,7 +558,7 @@ fnObj.uploadView02 = axboot.viewExtend(axboot.commonView, {
         this.target.file.value = "";
 
         if (_data.file) {
-            $('[data-form-view-01-btn="file"]').html('<i class="cqc-download"></i> ' + _data.file.fileNm);
+            $('[data-form-view-01-btn="file"]').jsp('<i class="cqc-download"></i> ' + _data.file.fileNm);
             $('[data-form-view-01-btn="file"]').on("click", (function () {
                 var url = _data.file.download;
                 return function () {
@@ -566,7 +566,7 @@ fnObj.uploadView02 = axboot.viewExtend(axboot.commonView, {
                 }
             })());
         } else {
-            $('[data-form-view-01-btn="file"]').html('<small>등록된 파일이 없습니다.</small>');
+            $('[data-form-view-01-btn="file"]').jsp('<small>등록된 파일이 없습니다.</small>');
             $('[data-form-view-01-btn="file"]').off("click");
         }
     },

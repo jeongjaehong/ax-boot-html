@@ -632,7 +632,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         var calendarConfig = jQuery.extend({}, cfg.calendar, {displayDate: (new Date())});
                         var input = (item.$target.get(0).tagName.toUpperCase() == "INPUT") ? item.$target : item.$target.find('input[type]');
@@ -674,7 +674,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         // secure-num bind
                         item.pickerContent.find('[data-secure-num-target]').each(function () {
@@ -711,7 +711,7 @@
 
                             po.push('<div style="clear:both;"></div>');
 
-                            $(this).html(po.join('')).on("click", '[data-secure-num-value]', function () {
+                            $(this).jsp(po.join('')).on("click", '[data-secure-num-value]', function () {
                                 var act = this.getAttribute("data-secure-num-value");
                                 var _input = (item.$target.get(0).tagName.toUpperCase() == "INPUT") ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -746,7 +746,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         var keyArray = [
                             [
@@ -852,9 +852,9 @@
                             var isShiftKey = false;
                             var toggleShift = function () {
                                 isShiftKey = !isShiftKey;
-                                $this.html(getKeyBoard(isShiftKey));
+                                $this.jsp(getKeyBoard(isShiftKey));
                             };
-                            $this.html(getKeyBoard(isShiftKey)).on("mousedown", '[data-keyboard-value]', function () {
+                            $this.jsp(getKeyBoard(isShiftKey)).on("mousedown", '[data-keyboard-value]', function () {
                                 var act = this.getAttribute("data-keyboard-value");
                                 var _input = (item.$target.get(0).tagName.toUpperCase() == "INPUT") ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -898,7 +898,7 @@
                             if (i < item.inputLength - 1) html.push('<div style="width:' + item.content.margin + 'px;float:left;height: 5px;"></div>');
                         }
                         html.push('<div style="clear:both;"></div>');
-                        item.pickerContent.html(html.join(''));
+                        item.pickerContent.jsp(html.join(''));
 
                         // secure-num bind
                         item.pickerContent.find('[data-numpad-target]').each(function () {
@@ -948,7 +948,7 @@
 
                             po.push('<div style="clear:both;"></div>');
 
-                            $(this).html(po.join('')).on("mousedown", '[data-numpad-value]', function () {
+                            $(this).jsp(po.join('')).on("mousedown", '[data-numpad-value]', function () {
                                 var act = this.getAttribute("data-numpad-value");
                                 var _input = (item.$target.get(0).tagName.toUpperCase() == "INPUT") ? item.$target : jQuery(item.$target.find('input[type]').get(idx));
                                 var val = _input.val();
@@ -1015,9 +1015,9 @@
 
                     if (U.isFunction(item.content)) {
                         // 함수타입
-                        item.pickerContent.html("Loading..");
+                        item.pickerContent.jsp("Loading..");
                         pickerContent["@fn"].call(this, queIdx, function (html) {
-                            item.pickerContent.html(html);
+                            item.pickerContent.jsp(html);
                         });
                     }
                     else {

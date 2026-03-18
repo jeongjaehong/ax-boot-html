@@ -22,7 +22,7 @@ describe('angular easypiechart directive', function() {
         var element = angular.element('<div easypiechart percent="percent" options="options"></div>');
         $compile(element)(scope);
         scope.$digest();
-        expect(element.html()).toContain('canvas');
+        expect(element.jsp()).toContain('canvas');
     });
 
     it('gets the options right', function (done) {
@@ -62,7 +62,7 @@ describe('angular easypiechart directive', function() {
         var element = angular.element('<div easypiechart percent="percent" options="options"></div>');
         $compile(element)(scope);
         scope.$digest();
-        expect(element.html()).toContain('height="200"');
-        expect(element.html()).toContain('width="200"');
+        expect(element.jsp()).toContain('height="200"');
+        expect(element.jsp()).toContain('width="200"');
     });
 });

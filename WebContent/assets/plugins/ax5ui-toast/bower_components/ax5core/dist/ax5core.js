@@ -158,13 +158,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
          * console.log( ax5.util.toJson( ax5.util.urlUtil() ) );
          * {
         *	"baseUrl": "http://ax5:2018",
-        *	"href": "http://ax5:2018/samples/index.html?a=1&b=1#abc",
+        *	"href": "http://ax5:2018/samples/index.jsp?a=1&b=1#abc",
         *	"param": "a=1&b=1",
         *	"referrer": "",
-        *	"pathname": "/samples/index.html",
+        *	"pathname": "/samples/index.jsp",
         *	"hostname": "ax5",
         *	"port": "2018",
-        *	"url": "http://ax5:2018/samples/index.html",
+        *	"url": "http://ax5:2018/samples/index.jsp",
         *	"hashdata": "abc"
         * }
          * ```

@@ -313,7 +313,7 @@ or import only the parts of Bootstrap you need:
 ## Version
 
 Bootstrap for Sass version may differ from the upstream version in the last number, known as
-[PATCH](http://semver.org/spec/v2.0.0.html). The patch version may be ahead of the corresponding upstream minor.
+[PATCH](http://semver.org/spec/v2.0.0.jsp). The patch version may be ahead of the corresponding upstream minor.
 This happens when we need to release Sass-specific changes.
 
 Before v3.3.2, Bootstrap for Sass version used to reflect the upstream version, with an additional number for
@@ -385,6 +385,6 @@ Michael Hartl's [Rails Tutorial](https://www.railstutorial.org/), [gitlabhq](htt
 [contrib]: https://github.com/twbs/bootstrap-sass/graphs/contributors
 [antirequire]: https://github.com/twbs/bootstrap-sass/issues/79#issuecomment-4428595
 [jsdocs]: http://getbootstrap.com/javascript/#transitions
-[sass-precision]: http://sass-lang.com/documentation/Sass/Script/Value/Number.html#precision%3D-class_method
+[sass-precision]: http://sass-lang.com/documentation/Sass/Script/Value/Number.jsp#precision%3D-class_method
 [mincer]: https://github.com/nodeca/mincer
 [autoprefixer]: https://github.com/postcss/autoprefixer

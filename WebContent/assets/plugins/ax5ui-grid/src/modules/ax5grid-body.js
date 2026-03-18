@@ -1015,7 +1015,7 @@
             .find('[data-ax5grid-cellholder]');
         var colGroup = this.colGroup;
         var col = colGroup[_colIndex];
-        updateCell.html(getFieldValue.call(this, list, list[_dindex], _dindex, col));
+        updateCell.jsp(getFieldValue.call(this, list, list[_dindex], _dindex, col));
 
         if (col.editor && col.editor.updateWith) {
             col.editor.updateWith.forEach(function (updateColumnKey) {
@@ -1028,7 +1028,7 @@
                             .find('[data-ax5grid-tr-data-index="' + _dindex + '"]')
                             .find('[data-ax5grid-column-rowindex="' + rowIndex + '"][data-ax5grid-column-colindex="' + colIndex + '"]')
                             .find('[data-ax5grid-cellholder]');
-                        updateWithCell.html(getFieldValue.call(self, list, list[_dindex], _dindex, col));
+                        updateWithCell.jsp(getFieldValue.call(self, list, list[_dindex], _dindex, col));
                     }
                 });
             });
@@ -1547,7 +1547,7 @@
                     '></td>');
             }
 
-            //_elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').html(SS.join(''));
+            //_elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').jsp(SS.join(''));
             _elTarget.find('tr[data-ax5grid-tr-data-index="' + di + '"]').empty().get(0).innerHTML = SS.join('');
         };
 

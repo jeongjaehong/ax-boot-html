@@ -159,7 +159,7 @@ fnObj.frameView = axboot.viewExtend({
     },
     asideView: axboot.viewExtend({
         initView: function () {
-            this.tmpl = $('[data-tmpl="ax-frame-aside"]').html();
+            this.tmpl = $('[data-tmpl="ax-frame-aside"]').jsp();
         },
         print: function () {
 
@@ -171,7 +171,7 @@ fnObj.frameView = axboot.viewExtend({
             this.openedIndex = 0;
 
             fnObj.frameView.aside
-                .html(ax5.mustache.render(this.tmpl, {items: menuItems}))
+                .jsp(ax5.mustache.render(this.tmpl, {items: menuItems}))
                 .on("click", '[data-label-index]', function () {
                     var index = this.getAttribute("data-label-index");
                     if (menuItems[index].children && menuItems[index].children.length) {
@@ -275,7 +275,7 @@ fnObj.tabView = axboot.viewExtend({
     frameTarget: null,
     limitCount: 10,
     list: [
-        {menuId: "00-swagger", id: "swagger", progNm: 'Swagger', menuNm: 'Swagger', progPh: '/swagger/index.html', url: '/swagger/index.html', status: "on", fixed: true},
+        {menuId: "00-swagger", id: "swagger", progNm: 'Swagger', menuNm: 'Swagger', progPh: '/swagger/index.jsp', url: '/swagger/index.jsp', status: "on", fixed: true},
         {menuId: "01-H2Console", id: "H2-Console", progNm: 'H2-Console', name: 'H2-Console', menuNm: 'H2-Console', progPh: '/h2-console', url: '/h2-console'},
         {menuId: "02-ModelExtractor", id: "ModelExtractor", progNm: 'ModelExtractor', name: 'ModelExtractor', menuNm: 'ModelExtractor', progPh: '/modelExtractor/db', url: '/modelExtractor/db'}
     ],
@@ -376,8 +376,8 @@ fnObj.tabView = axboot.viewExtend({
         po.push('<div class="tab-item-addon" data-tab-id=""></div>');
         po.push('</div>');
 
-        this.target.html(po.join(''));
-        this.frameTarget.html(fo.join(''));
+        this.target.jsp(po.join(''));
+        this.frameTarget.jsp(fo.join(''));
         this.targetHolder = this.target.find(".tab-item-holder");
         // event bind
         this.bindEvent();
@@ -591,6 +591,6 @@ fnObj.activityTimerView = axboot.viewExtend({
             displayTime.push("00");
         }
 
-        this.$target.html(displayTime.join(""));
+        this.$target.jsp(displayTime.join(""));
     }
 });

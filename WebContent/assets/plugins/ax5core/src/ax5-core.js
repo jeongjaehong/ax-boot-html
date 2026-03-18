@@ -176,13 +176,13 @@
          * console.log( ax5.util.toJson( ax5.info.urlUtil() ) );
          * {
 		 *	"baseUrl": "http://ax5:2018",
-		 *	"href": "http://ax5:2018/samples/index.html?a=1&b=1#abc",
+		 *	"href": "http://ax5:2018/samples/index.jsp?a=1&b=1#abc",
 		 *	"param": "a=1&b=1",
 		 *	"referrer": "",
-		 *	"pathname": "/samples/index.html",
+		 *	"pathname": "/samples/index.jsp",
 		 *	"hostname": "ax5",
 		 *	"port": "2018",
-		 *	"url": "http://ax5:2018/samples/index.html",
+		 *	"url": "http://ax5:2018/samples/index.jsp",
 		 *	"hashdata": "abc"
 		 * }
          * ```
@@ -2080,7 +2080,7 @@
          * "&gt;" represents the > sign.
          * "&amp;" represents the & sign.
          * "&quot; represents the " mark.
-         * [Character entity references](https://www.w3.org/TR/html401/charset.html#h-5.3)
+         * [Character entity references](https://www.w3.org/TR/html401/charset.jsp#h-5.3)
          * @method ax5.util.escapeHtml
          * @param {String} s
          * @returns {string}

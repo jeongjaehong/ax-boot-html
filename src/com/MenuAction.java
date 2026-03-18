@@ -24,7 +24,7 @@ public class MenuAction extends Action {
 	 */
 	public void processLoadMenu() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 			long start_menu = getInput().getLong("start");
@@ -34,12 +34,12 @@ public class MenuAction extends Action {
 			} else {
 
 				try {
-					getSelect("dpms").saveOpenLog(this.getInput(), loginBean);
+					getSelect("default").saveOpenLog(this.getInput(), loginBean);
 				} catch (Exception e) {
-					DBLog.errorLog(this.getRequest(), getConnectionManager("dpms"), e, this);
+					DBLog.errorLog(this.getRequest(), getConnectionManager("default"), e, this);
 				}
 
-				RecordSet rs = getSelect("dpms").selectMenuList(loginBean.getUserId(), start_menu);
+				RecordSet rs = getSelect("default").selectMenuList(loginBean.getUserId(), start_menu);
 
 				if (rs != null && rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);
@@ -60,7 +60,7 @@ public class MenuAction extends Action {
 	 */
 	public void processLoadFavorite() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 			long start_menu = getInput().getLong("start");
@@ -69,7 +69,7 @@ public class MenuAction extends Action {
 				PortalUtil.setResult(this.getResponse(), -99, "로그인 정보를 찾을 수 없습니다.");
 			} else {
 
-				RecordSet rs = getSelect("dpms").selectFavorite(loginBean.getUserId());
+				RecordSet rs = getSelect("default").selectFavorite(loginBean.getUserId());
 
 				if (rs != null && rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);
@@ -87,7 +87,7 @@ public class MenuAction extends Action {
 
 	public void processLoadTop5() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 			long start_menu = getInput().getLong("start");
@@ -96,7 +96,7 @@ public class MenuAction extends Action {
 				PortalUtil.setResult(this.getResponse(), -99, "로그인 정보를 찾을 수 없습니다.");
 			} else {
 
-				RecordSet rs = getSelect("dpms").selectTop5(loginBean.getUserId());
+				RecordSet rs = getSelect("default").selectTop5(loginBean.getUserId());
 
 				if (rs != null && rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);
@@ -118,7 +118,7 @@ public class MenuAction extends Action {
 
 	public void processToggleFavorite() {
 
-		DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+		DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 		HashMap<String, Object> map = null;
 		try {
 
@@ -133,7 +133,7 @@ public class MenuAction extends Action {
 			int favorite_seq = this.getInput().getInteger("favorite_seq");
 			int program_id = this.getInput().getInteger("program_id");
 
-			map = getSelect("dpms").toggleFavorite(favorite_seq, program_id, loginBean);
+			map = getSelect("default").toggleFavorite(favorite_seq, program_id, loginBean);
 
 			if (0 == (Integer) map.get("result")) {
 

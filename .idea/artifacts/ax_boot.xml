@@ -10,6 +10,7 @@
           <element id="file-copy" path="$PROJECT_DIR$/src/config.properties" />
           <element id="file-copy" path="$PROJECT_DIR$/src/log4j.properties" />
           <element id="module-output" name="ax-boot-html" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/log4j2.properties" />
         </element>
       </element>
     </root>

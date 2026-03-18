@@ -495,11 +495,11 @@
                         if (typeof _this.tmpl[dataPath] == "undefined") _this.tmpl[dataPath] = {};
                         if (typeof repeat_idx != "undefined") {
                             _this.tmpl[dataPath][repeat_idx] = {
-                                container: dom, content: dom.find("script").html()
+                                container: dom, content: dom.find("script").jsp()
                             };
                         } else {
                             _this.tmpl[dataPath]["0"] = {
-                                container: dom, content: dom.find("script").html()
+                                container: dom, content: dom.find("script").jsp()
                             };
                         }
                         //dom.empty().show();

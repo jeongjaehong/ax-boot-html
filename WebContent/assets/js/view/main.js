@@ -298,7 +298,7 @@ var fnObj = {
 				_this.graph = _this.target.Line(data, {
 					legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 				});
-				$("#chart-001-legend").html(_this.graph.generateLegend());
+				$("#chart-001-legend").jsp(_this.graph.generateLegend());
 
 			}else{
 
@@ -390,7 +390,7 @@ var fnObj = {
 					};
 
 					_this.graph = _this.target.Doughnut(data, options);
-					$("#chart-002-legend").html(_this.graph.generateLegend());
+					$("#chart-002-legend").jsp(_this.graph.generateLegend());
 
 			}else{
 

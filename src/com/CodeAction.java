@@ -21,7 +21,7 @@ public class CodeAction extends Action {
 
 	public void processLoadCode() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			String code = getInput().getString("code");
 
@@ -33,11 +33,11 @@ public class CodeAction extends Action {
 
 				RecordSet rs = null;
 				if ("GW_PUMTYPE".equals(code)) {
-					rs = getSelect("dpms").selectGwPumTypeList();
+					rs = getSelect("default").selectGwPumTypeList();
 				} else if ("TEAM_CODE".equals(code)) {
-					rs = getSelect("dpms").selectTeamCodeList();
+					rs = getSelect("default").selectTeamCodeList();
 				} else if ("CMTONG".equals(code)) {
-					rs = getSelect("dpms").selectVacationCodeList();
+					rs = getSelect("default").selectVacationCodeList();
 				} else if ("CDMIDL".equals(code)) {
 					rs = getSelect("erp").selectItemMiddleCodeList();
 				}
@@ -57,7 +57,7 @@ public class CodeAction extends Action {
 
 	public void processLoadCmtong() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			String tong_sect = getInput().getString("tong_sect");
 			String tong_deta = getInput().getString("tong_deta");
@@ -86,7 +86,7 @@ public class CodeAction extends Action {
 
 	public void processGetEndHollyDate() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			String start_date = getInput().getString("start_date");
 			int days = getInput().getInteger("days");
@@ -110,7 +110,7 @@ public class CodeAction extends Action {
 
 	public void processVacationDupCheck() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -118,7 +118,7 @@ public class CodeAction extends Action {
 				PortalUtil.setResult(this.getResponse(), -99, "로그인 정보를 찾을 수 없습니다.");
 			} else {
 
-				HashMap<String, Object> map = getSelect("dpms").VacationDupCheck(getInput());
+				HashMap<String, Object> map = getSelect("default").VacationDupCheck(getInput());
 
 				PortalUtil.setResult(this.getResponse(), map, false);
 			}
@@ -131,7 +131,7 @@ public class CodeAction extends Action {
 
 	public void processLoadSavedApprovalLineList() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -140,7 +140,7 @@ public class CodeAction extends Action {
 			} else {
 
 				RecordSet rs = null;
-				rs = getSelect("dpms").selectSavedApprovalLineList(loginBean.getUserId());
+				rs = getSelect("default").selectSavedApprovalLineList(loginBean.getUserId());
 
 				if (rs != null && rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);
@@ -157,7 +157,7 @@ public class CodeAction extends Action {
 
 	public void processLoadMenuPath() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -166,7 +166,7 @@ public class CodeAction extends Action {
 			} else {
 
 				RecordSet rs = null;
-				rs = getSelect("dpms").selectMenuPath(this.getInput());
+				rs = getSelect("default").selectMenuPath(this.getInput());
 
 				if (rs != null && rs.nextRow()) {
 					PortalUtil.setResult(this.getResponse(), rs);
@@ -185,7 +185,7 @@ public class CodeAction extends Action {
 		try {
 
 
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -195,10 +195,10 @@ public class CodeAction extends Action {
 
 				HashMap map = null;
 				if ("delete".equals(getInput().getString("command"))) {
-					map = getSelect("dpms").deleteApprovalLine(this.getInput(), loginBean.getUserId());
+					map = getSelect("default").deleteApprovalLine(this.getInput(), loginBean.getUserId());
 
 				} else {
-					map = getSelect("dpms").saveApprovalLine(this.getInput(), loginBean.getUserId());
+					map = getSelect("default").saveApprovalLine(this.getInput(), loginBean.getUserId());
 				}
 
 				PortalUtil.setResult(this.getResponse(), map);
@@ -212,7 +212,7 @@ public class CodeAction extends Action {
 
 	public void processLoadCityName() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -232,7 +232,7 @@ public class CodeAction extends Action {
 
 	public void processLoadGuName() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -252,7 +252,7 @@ public class CodeAction extends Action {
 
 	public void processLoadDongName() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -272,7 +272,7 @@ public class CodeAction extends Action {
 
 	public void processLoadDoroName() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -292,7 +292,7 @@ public class CodeAction extends Action {
 
 	public void processLoadAddressList() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
@@ -312,7 +312,7 @@ public class CodeAction extends Action {
 
 	public void processGetCyberSinmungo() {
 		try {
-			DBLog.actionLog(this.getRequest(), getConnectionManager("dpms"), this);
+			DBLog.actionLog(this.getRequest(), getConnectionManager("default"), this);
 
 			LoginBean loginBean = (LoginBean) getSessionAttribute("loginBean");
 
